@@ -1,0 +1,11 @@
+# Site settings
+title: Why We Can't Have Nice Things
+email: husobee@e-ie.io
+description: > # this means to ignore newlines until "baseurl:"
+  Just stuff I get interested in, and need to express to the world.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://husobee.github.io" # the base hostname & protocol for your site
+github_username:  husobee
+
+# Build settings
+markdown: kramdown
