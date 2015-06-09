@@ -147,4 +147,4 @@ func TestActionOnSomething (t *testing.T) {
 Hope this was helpful to anyone.
 
 [unit-test-gist]: https://gist.github.com/husobee/9ff87a6f27e9abb4a3bc
-[agtorre-blog]: http://www.arron-torres.com
+[agtorre-blog]: http://www.aaron-torres.com
