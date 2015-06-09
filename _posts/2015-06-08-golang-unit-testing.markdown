@@ -14,6 +14,8 @@ mechanisms I use to deal with common unit testing problems in golang:
 
 *tl;dr: [unit testing in golang][unit-test-gist]*
 
+My coworker [agtorre][agtorre-blog] and I implement our mocking with these mechanisms for our unit testing.
+
 ## Monkey Patching in Golang
 
 So, from what I understand, monkey patching is the art of modifying a module,
@@ -145,3 +147,4 @@ func TestActionOnSomething (t *testing.T) {
 Hope this was helpful to anyone.
 
 [unit-test-gist]: https://gist.github.com/husobee/9ff87a6f27e9abb4a3bc
+[agtorre-blog]: http://www.arron-torres.com
