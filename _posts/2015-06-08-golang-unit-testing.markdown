@@ -46,7 +46,7 @@ import (
     "testing"
 )
 
-func TestMain(t \*testing.T) {
+func TestMain(t *testing.T) {
     // set oldSqlOpen to old sqlOpen 
     oldSqlOpen := sqlOpen
     // as we are exiting, revert sqlOpen back to oldSqlOpen at end of function
@@ -83,7 +83,7 @@ type Something struct {
     counter int
 }
 
-func (s \*Something) Increment() error {
+func (s *Something) Increment() error {
     counter++
     return nil
 }
@@ -119,7 +119,7 @@ type MockSomething struct {
 
 //Increment will check to see if we have a defined mockIncrement,
 // otherwise return success happy path
-func (s \*MockSomething) Increment() error {
+func (s *MockSomething) Increment() error {
     if s.mockIncrement != nil {
         return s.mockIncrement()
     }
@@ -127,7 +127,7 @@ func (s \*MockSomething) Increment() error {
 }
 
 
-func TestActionOnSomething (t \*testing.T) {
+func TestActionOnSomething (t *testing.T) {
     // create a MockSomething, we will use as a drop in replacement
     // of Something in our function call we are trying to test
     ms := &MockSomething{
