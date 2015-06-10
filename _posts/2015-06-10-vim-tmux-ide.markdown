@@ -43,4 +43,9 @@ is superior to the following other schemes out there to do real remote collabora
 I understand that people want to work in a comfortable environment for their day to day work.  I don't think people should be mandated to fit within
 a certain box in order to collaborate, but then again it is hard to collaborate if you don't have a base toolset that works for everyone on the team.
 
+Here is my [.vimrc][vimrcgist] and my [.tmux.conf][tmuxgist]
+
 Hope this was helpful to anyone.
+
+[vimrcgist] https://gist.github.com/husobee/8d6ae09f79f4e584c8a2
+[tmuxgist] https://gist.github.com/husobee/c20d17775db97045b123
