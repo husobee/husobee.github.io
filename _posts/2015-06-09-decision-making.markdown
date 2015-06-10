@@ -15,7 +15,7 @@ This morning I decided I wanted to go flying.  I got up, looked out the window, 
 nice day to go!  So I drove about five minutes to my little airport, went to my hangar and started my ritualistic 
 dance called the pre-flight.
 
-Pre-flight is a gathering of facts about the health of the aircraft and non aircraft related data that is imperitive to the flight
+Pre-flight is a gathering of facts about the health of the aircraft and non aircraft related data that is imperative to the flight
 to inform a decision to continue or not with the flight.  Briefly a preflight consists of the following high level items:
 
 1. Check that there are no flight restrictions (NOTAMs, TFRs, etc)
@@ -38,7 +38,7 @@ I turned the aircraft on, following another checklist to inform the next step of
 
 1. Master switch on
 2. Boost Pump on, and check that fuel selector is on fullest tank
-3. Fuel pressure guage shows fuel can make it to the engine
+3. Fuel pressure gauge shows fuel can make it to the engine
 4. Mixture lever full rich mixture
 5. Enough Throttle to kick the engine on
 6. Turn the key to engage the starter
@@ -48,12 +48,12 @@ I turned the aircraft on, following another checklist to inform the next step of
 10. Check radios for communications
 
 Excellent, everything is working so far, we are still a go for this flying mission.  Next series of steps is to make sure the engine can manage a takeoff, and 
-is called a run up.  This is really the step that allows one to guage if the aircraft is ready to take you up in the atmosphere.
+is called a run up.  This is really the step that allows one to gauge if the aircraft is ready to take you up in the atmosphere.
 
 1. Run throttle up
 2. Check that propeller control works (constant speed propeller)
-3. Check that both sets of magnitos (the things that drive the spark plugs) work
-4. Check that carberator heat works
+3. Check that both sets of magnetos (the things that drive the spark plugs) work
+4. Check that carburetor heat works
 5. Check that engine can draw a vacuum and amperage is nominal
 
 Sweet, the aircraft survived the run up and I have more good facts to inform my decision to continue with the flight.  Things are looking great so far.
@@ -67,7 +67,7 @@ Next set of checks are similar to the pre-flight, but performed within the cockp
 5. Check that airplane is in proper configuration (trim to takeoff, flaps to takeoff)
 
 Everything looked great to this point. All of the facts I have gathered for this flight have been telling me that the flight will be a success.  Everyone who is not
-in aviation I talk to recites the same line, "wow, i can't believe you do that, it is so dangerious."  It is due to misconceptions, and lack of awareness... If they 
+in aviation I talk to recites the same line, "wow, i can't believe you do that, it is so dangerous."  It is due to misconceptions, and lack of awareness... If they 
 only knew the steps I go through EVERY SINGLE flight to ensure my safety.. If only they knew the standards I keep my equipment up to...  If only they knew that I literally 
 take 30 minutes before each 30 minute flight to perform safety checks to the above listed extent.
 
@@ -77,13 +77,13 @@ already concerning...
 
 *What do you do?*
 
-There is a condition you learn about in flight training, nothing physical, or atmospheric.  The conditions are completely psycological.  They are called "Get-There-Itis" and "Machoism"
+There is a condition you learn about in flight training, nothing physical, or atmospheric.  The conditions are completely psychological.  They are called "Get-There-Itis" and "Machoism"
 which is a major cause of aviation accidents. At this point this morning I was sitting on the tarmac, listening to the weather broadcast repeating itself, over and over
 again.  Each time hoping for some indication that I could continue my planned flight... I already have a lot of time vested in the preparation of this mission.  
 Each time I listened to the repeating loop of the weather station I hoped to hear the conditions stabilizing, or at the very least stay the same...
 
 Do you chance it, because you want to feel the sensation of flying, or the spectacular views one can only get a few thousand feet above the ground?  Are you a wimp, a little wind won't hurt you.
 
-If only we had such rigious checks we performed for every decision we had to make.  Would you choose differently?  When was the last time you checked the air pressure in your car's tires?
+If only we had such rigorous checks we performed for every decision we had to make.  Would you choose differently?  When was the last time you checked the air pressure in your car's tires?
 
 Hope this was helpful to anyone.
