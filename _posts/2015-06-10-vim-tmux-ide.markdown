@@ -47,5 +47,5 @@ Here is my [.vimrc][vimrcgist] and my [.tmux.conf][tmuxgist]
 
 Hope this was helpful to anyone.
 
-[vimrcgist] https://gist.github.com/husobee/8d6ae09f79f4e584c8a2
-[tmuxgist] https://gist.github.com/husobee/c20d17775db97045b123
+[vimrcgist]: https://gist.github.com/husobee/8d6ae09f79f4e584c8a2
+[tmuxgist]: https://gist.github.com/husobee/c20d17775db97045b123
