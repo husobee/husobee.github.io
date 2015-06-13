@@ -195,4 +195,8 @@ func (yne *YesNoEnum) Scan(value interface{}) error {
 
 So, moment of truth... do we get a customer record printed out?
 
+Full gist [here][scanner-valuer-gist]
+
 Hope this was helpful to anyone.
+
+[scanner-valuer-gist]: https://gist.github.com/husobee/cac9cddbaacc1d3a7ae1
