@@ -32,10 +32,10 @@ Lucky for use, Behavior Testing is a thing, that has been around for a little
 while.  In fact, I believe [Dan North][dannorth-bdd] was the one who finally 
 "got it" when realizing that requirements == behaviors == what should be tested.
 
-I would consider the Genesis for Behavior Testing being being widely adopted 
+I would consider the Genesis for Behavior Testing being widely adopted 
 resides with the success of the [the cucumber][cucumber] project.  Cucumber 
 brought to the world an English representation of a behavior in a pars-able 
-syntax.
+syntax called [Gherkin][gherkin].
 
 *"It is a business readable, domain specific language that lets you describe 
 software's behavior without detailing how that behavior is implemented"*
