@@ -44,7 +44,7 @@ to accomplish this:
 
 Now to setup daily reporting, we just need to make a cronjob:
 
-{% highlight cron %}
+{% highlight text %}
 0 1 * * * /usr/bin/aide -C
 {% endhighlight %}
 
@@ -52,7 +52,7 @@ You will likely notice that you might want to not care about changes to certain
 locations.  You can ignore directories with this syntax in the aide.conf config 
 file:
 
-{% highlight txt %}
+{% highlight text %}
 !@@{TOPDIR}/path/to/ok/to/change/.*$
 {% endhighlight %}
 
