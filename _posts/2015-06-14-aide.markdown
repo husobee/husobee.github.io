@@ -1,0 +1,62 @@
+---
+layout: post
+title: "What's Changed??"
+date: 2015-06-14 20:00:00
+categories: aide intrusion detection
+---
+
+For several years on my internet connected Linux machines I have run file based
+intrusion detection software to make sure changes to files on those systems are 
+authorized.  Having a server online without any form of file based intrusion 
+detection is very silly.  Without knowing what files changed on your system how
+do you know you are all alone on that workstation/server?  How can you feel warm
+and cozy not knowing for sure what actually changed? 
+
+There are several software packages that can do this level of intrusion 
+detection, some commercial, some open source.  I personally like [AIDE][aide].
+
+AIDE stands for Advanced Intrusion Detection Environment, and is a file and 
+directory integrity checker.  What I like about AIDE is it's relative simplicity
+and configurable.
+
+Basically AIDE is capable of performing multiple types of hashes on files on the
+file system.  You can pick your favorite hash(s) to use on the files on your 
+system, such as md5, sha1, tiger, etc.  This allows you to combat against 
+hash collision attacks.
+
+Another aspect of AIDE I personally like is the ability to use regular 
+expressions to specify which files and directories should be included/excluded 
+from the IDS check.  
+
+To get started, install aide (your package manager probably has aide), then run
+the following command to initialize aide:
+
+{% highlight sh %}
+aide --init
+sudo cp /var/lib/aide/aide.db.new /var/lib/aide/aide.db
+{% endhighlight %}
+
+*Very Simple, right?*
+
+If you are using the Debian package it most likely will setup a daily crontask 
+for emailing reporting to root@localhost.  If not you can make your own crontjob
+to accomplish this:
+
+Now to setup daily reporting, we just need to make a cronjob:
+
+{% highlight cron %}
+0 1 * * * /usr/bin/aide -C
+{% endhighlight %}
+
+You will likely notice that you might want to not care about changes to certain 
+locations.  You can ignore directories with this syntax in the aide.conf config 
+file:
+
+{% highlight txt %}
+!@@{TOPDIR}/path/to/ok/to/change/.*$
+{% endhighlight %}
+
+
+Hope this was helpful to anyone.
+
+[aide]: http://aide.sourceforge.net/
