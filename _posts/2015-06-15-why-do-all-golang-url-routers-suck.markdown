@@ -44,7 +44,7 @@ func pathMatch(pattern, path string) bool {
 
 // Find a handler on a handler map given a path string
 // Most-specific (longest) pattern wins
-func (mux \*ServeMux) match(path string) (h Handler, pattern string) {
+func (mux *ServeMux) match(path string) (h Handler, pattern string) {
     var n = 0
     for k, v := range mux.m {
         if !pathMatch(k, path) {
@@ -105,7 +105,7 @@ type Router struct {
 }
 
 // Match matches registered routes against the request.
-func (r \*Router) Match(req \*http.Request, match \*RouteMatch) bool {
+func (r *Router) Match(req *http.Request, match *RouteMatch) bool {
     for _, route := range r.routes {
         if route.Match(req, match) {
             return true
@@ -122,7 +122,7 @@ is done in the Route structure:
 
 {% highlight go %}
 // Match matches the route against the request.
-func (r \*Route) Match(req \*http.Request, match \*RouteMatch) bool {
+func (r *Route) Match(req *http.Request, match *RouteMatch) bool {
     if r.buildOnly || r.err != nil {
         return false
     }
@@ -161,14 +161,14 @@ matchers come from, and how they are made.  Specifically how do the method match
 // methodMatcher matches the request against HTTP methods.
 type methodMatcher []string
 
-func (m methodMatcher) Match(r \*http.Request, match \*RouteMatch) bool {
+func (m methodMatcher) Match(r *http.Request, match *RouteMatch) bool {
     return matchInArray(m, r.Method)
 }
 
 // Methods adds a matcher for HTTP methods.
 // It accepts a sequence of one or more methods to be matched, e.g.:
 // "GET", "POST", "PUT".
-func (r \*Route) Methods(methods ...string) \*Route {
+func (r *Route) Methods(methods ...string) *Route {
     for k, v := range methods {
         methods[k] = strings.ToUpper(v)
     }
@@ -223,7 +223,7 @@ string!  This means that the handler will have access to the parameters the same
 
 {% highlight go %}
 // ServeHTTP dispatches the handler registered in the matched route.
-func (r \*Router) ServeHTTP(w http.ResponseWriter, req \*http.Request) {
+func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
     // Clean path to canonical form and redirect.
     if p := cleanPath(req.URL.Path); p != req.URL.Path {
         w.Header().Set("Location", p)
@@ -247,7 +247,7 @@ func (r \*Router) ServeHTTP(w http.ResponseWriter, req \*http.Request) {
 }
 
 // registerVars adds the matched route variables to the URL query.
-func registerVars(r \*http.Request, vars map[string]string) {
+func registerVars(r *http.Request, vars map[string]string) {
     parts, i := make([]string, len(vars)), 0
     for key, value := range vars {
         parts[i] = url.QueryEscape(":"+key) + "=" + url.QueryEscape(value)
