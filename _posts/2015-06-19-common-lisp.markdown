@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "(defun hello-world () (format t "hello world))"
+title: "common lisp"
 date: 2015-06-19 20:00:00
 categories: lisp new
 ---
