@@ -1,0 +1,93 @@
+---
+layout: post
+title: "airplane annual inspection"
+date: 2015-06-26 20:00:00
+categories: airplane annual
+---
+
+This week I had been assisting in my airplane's annual inspection.  Here is a 
+high level breakdown of what _my_ airplane's annual consists of is as follows:
+
+* Take *ALL* the inspection panels off of the aircraft (4 hours labor, 1 drill battery)
+  * There are approximately 10 oval inspection panels under each wing
+  * There are approximately 6 oval inspection panels under the fuselage
+  * There are 4 large sheet metal panels under the fuselage
+  * There are 2 panels under the nose next to the gear doors
+  * There are 2 cowling panels, one on each side of the nose
+  * There is 1 top cowling (hood)
+  * There are 5 oval panels on the empanage (tail)
+* Change Oil (2 hours, mainly fighting the oil screen housing and gasket)
+  * Drain Oil via the quick release drain in the nose
+  * Dismantle the oil screen housing and clean the oil screen
+  * Replace oil screen in housing, replace housing, replace gasket
+* Remove all 8 spark plugs (there are 2 per cylinder, yay redundancy) (1 hour)
+  * Disconnect spark plug leads
+  * Clean Plugs, remove lead build-up (that's right, GA planes run leaded gasoline)
+  * Gap plugs (between .015" and .019")
+  * Apply anti-seize and replace plugs
+* Perform Compression Test of the cylinders (easy job)
+* Inspect muffler
+  * Dismantle muffler shroud (oh yeah, that is where the cabin heat comes from)
+  * Inspect for wear, disintegration
+  * Replace muffler shroud
+* Lubricate!
+  * Every... single... rod-end needs a good shot of silicon spray for lubrication
+  * Every... Single... grease nipple needs more grease pumped in
+  * Every... Single... tire needs to be repacked with grease
+* Fuel cap O-Rings need to be inspected (to make sure fuel doesn't escape ;))
+* Landing Gear Rigging
+  * Mains need to be within a certain tolerance
+  * Nose gear needs to be within a certain tolerance
+  * Run gear up and down
+  * Run gear down with emergency extension mechanism
+  * Validate there is no play in the wheels
+* Spinner Inspection
+  * Spinner needs to be taken off of the propeller
+  * Propeller needs to be inspected and potentially greased
+* Battery inspection
+  * If there is battery acid on the battery, or in the box you need to be careful 
+  and neutralize.
+  * Clean battery terminals
+  * Validate levels look good
+  * Validate that the battery can hold a charge.
+* Magic Voodoo IA Certified Mechanic Inspection
+  * All those inspection panels that were opened up need to be looked in, and 
+  a certified mechanic needs to review and assert the aircraft is good
+  * Certified mechanic needs to review and assert the aircraft power-plant is good
+* AD hell... (Airworthiness Directives)
+  * This is the portion of the annual where the certified mechanic sits at a desk
+  for several hours and ruminates over what the aircraft needs in order to be 
+  compliant based on the shotgun blast of directives the government puts out.
+  * If there are "re-occurring" ADs, that require action, said action needs to be
+  taken.
+* Take *ALL* the inspection panels and affix to aircraft (4 hours labor, 1 drill battery)
+  * There are approximately 10 oval inspection panels under each wing
+  * There are approximately 6 oval inspection panels under the fuselage
+  * There are 4 large sheet metal panels under the fuselage
+  * There are 2 panels under the nose next to the gear doors
+  * There are 2 cowling panels, one on each side of the nose
+  * There is 1 top cowling (hood)
+  * There are 5 oval panels on the empanage (tail)
+* Perform Run-Up and leak check on oil change
+* Clean interior of aircraft
+* Wash and Wax Exterior
+
+The above is just a high level of what efforts I had assisted with in the annual
+inspection of my airplane this past week.  I have learned one lesson, which is
+I am not well suited to be a professional mechanic.  A few times under the
+aircraft I started getting really woozy from the fumes.  The mixture of the
+various very dangerous chemicals that makes the aircraft go, as well as being on
+my back in a tight confined area... well it just isn't for me.
+
+Every single year this huge list of tasks are run through.  Some years are worse
+than others.  If you are an aircraft owner, (and it is deemed acceptable to perform
+an owner assisted annual with your FSDO) you should really consider doing the 
+grunt work of your aircraft annual with your mechanic.  It is truly eye opening.
+
+I personally feel like it makes me a better aviator, in that I know exactly how
+all the complex systems work, and what potential failures could happen.  I keep 
+an eye on things like cylinder head and exhaust gas temperatures more keenly, as
+I know how that relates to what the engine is doing.  I also am able to more 
+clearly articulate what squawks I have to mechanics when I feel work needs to be
+done.
+
