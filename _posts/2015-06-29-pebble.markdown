@@ -1,0 +1,32 @@
+---
+layout: post
+title: "Moon Phase Pebble App Public"
+date: 2015-06-29 20:00:00
+categories: pebble moon-phase
+---
+
+Today I finally decided to make public my [pebble moon phase app][app] on the 
+pebble marketplace.  It is a simplified moon phase application for the pebble
+watch.  The moon phase is calculated based on the age of the moon, and then 
+drawn using black and white lines on the watchface every minute, filling in a 
+static white background circle.  Below is what it looks like:
+
+![moon phase app screenshot](https://raw.githubusercontent.com/husobee/pebble-moonphase/master/pebble-screenshot_2015-06-29_12-06-28.png "Moon Phase App")
+
+If you don't have a smart watch, and have been thinking about getting one, I 
+have been very impressed with the open-ness of the pebble watch.  It will work
+with iOS and Android phones, and is a low power smartwatch that works very,
+very well in full sunlight.  And for only ~$90 you can get into a smart watch.
+
+I personally like it because you can create apps in a few different ways:
+
+1. C SDK -> Yeah, that is right, they give you access to the watch's SDK in C
+2. Javascript SDK -> You can write javascript code that is executed on your
+phone, and rendered on the watch
+3. Companion Phone App -> You can write a companion app on the phone that works
+with the pebble watch.
+
+Here is where I opensourced the [moon phase watch app][repo]
+
+[app]: http://apps.getpebble.com/en_US/application/55916f52981ce4e960000069
+[repo]: https://github.com/husobee/pebble-moonphase
