@@ -5,7 +5,7 @@ date: 2015-09-20 20:00:00
 categories: golang webframework echo
 ---
 
-As some recall, I have already expressed my [views of certain golang URL routers][url routers] before, and
+As some recall, I have already expressed my [views of certain golang URL routers][url_routers] before, and
 I have been interested in a new one lately, the router that is built into the [Echo][master_echo] web framework.
 
 ## Why Echo?
