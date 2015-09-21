@@ -5,13 +5,13 @@ date: 2015-09-20 20:00:00
 categories: golang webframework echo
 ---
 
-As some recall, I have already expressed my [url routers][views of certain golang URL routers] before, and
-I have been interested in a new one lately, the router that is built into the [master_echo][Echo] web framework.
+As some recall, I have already expressed my [views of certain golang URL routers][url routers] before, and
+I have been interested in a new one lately, the router that is built into the [Echo][master_echo] web framework.
 
 ## Why Echo?
 
 Echo is very interesting to me, as, well honestly, it has one of the fastest Web Router implementation out there, which
-is awesome, and backed up by [go-perf-test][this fork] of [go-perf-test-orig][julienschmidt's] go http router benchmark suite.
+is awesome, and backed up by [this fork][go-perf-test] of [julienschmidt's][go-perf-test-orig] go http router benchmark suite.
 
 Here is a shortened performance report of the top url routers using this performance test agains't the huge github api:
 
@@ -47,27 +47,27 @@ BenchmarkVulcan_GithubAll                   5000            300177 ns/op        
 
 {% endhighlight %}
 
-As you can see [master_echo][Echo] is a top contender for complex api routing, moreover it is much faster than the standard
+As you can see [Echo][master_echo] is a top contender for complex api routing, moreover it is much faster than the standard
 library implementation, and has a smaller memory footprint _(did you see the 0B alloc/op??)_ which makes it an awesome choice for a 
 small fast url router implementation.
 
 ## Sounds Great, What is the problem?
 
-Well, like anything else, you can't have great performance without robbing from somewhere else.  In [master_echo][Echo's] case
+Well, like anything else, you can't have great performance without robbing from somewhere else.  In [Echo's][master_echo] case
 we have the following issues from what I can see:
 
 1. No Regular Expression Matching on URL parameters
 2. Required to use the Echo Context Scheme to get url parameters
 3. Reports back 404 when 405 is more correct
-4. No capability for Requesting of the Web Service what it is capable of [options][using OPTIONS]
+4. No capability for Requesting of the Web Service what it is capable of [using OPTIONS][options]
 
-Basically, a lot of the issues I have laid out in my [url_routers][prior blog on url routers].  But, I decided to see if I couldn't help
+Basically, a lot of the issues I have laid out in my [prior blog on url routers][url_routers].  But, I decided to see if I couldn't help
 correct some of these issues, as I really like the potential within this implementation.
 
 ## How does Echo's URL Router Work?
 
 Echo has followed a good design on how to handle routing from a high level.  The router is created as a radix tree datastructure allowing
-for efficient string searching capabilities.  This implementation currently contains a radix tree per HTTP method as seen [multiple-trees][here].
+for efficient string searching capabilities.  This implementation currently contains a radix tree per HTTP method as seen [here][multiple-trees].
 When a route is searched on, the first thing that is done in Router.Find, is isolating the correct method radix tree to use:
 
 {% highlight go %}
@@ -111,11 +111,11 @@ What happens when we do the following:
 
 We end up getting a HTTP Status Code of 404, or "Resource Not Found" as a response.  This isn't really true, as the resource */hi* exists, we just aren't allowed to use
 that method....  We should be getting back a 405, or "Method Not Allowed" response back.  Moreover, to point #4 above, we also get a 404 if we use an OPTIONS HTTP method
-as the OPTIONS tree isn't populated with this route. To these ends I have [405_pull][submitted a PR] which is still being fleshed out to improve the speed implications.
+as the OPTIONS tree isn't populated with this route. To these ends I have [submitted a PR][405_pull] which is still being fleshed out to improve the speed implications.
 
 ## What does this PR do?
 
-[405_pull][This PR] basically eliminates the per method tree structure in favor of a full tree combined for all routes, which contains all methods applicable for each leaf node route
+[This PR][405_pull] basically eliminates the per method tree structure in favor of a full tree combined for all routes, which contains all methods applicable for each leaf node route
 that is specified.  Below is a snip-it of the visualization of the Github API loaded into this new single tree. You can pretty clearly see the available methods on particular routes.
 
 {% highlight text %}
