@@ -1,0 +1,144 @@
+---
+layout: post
+title: "Introducing the Vestigo URL Router"
+date: 2015-09-22 20:00:00
+categories: golang urlrouter vestigo
+---
+
+## Introducing Vestigo
+
+I am very happy to annouce the initial release of the [Vestigo URL router][vestigo-main] for 
+idomatic golang web application URL routing.  I have been expressing [views of certain golang URL routers][url-routers]
+in past blog entries, and more recently been working on [exploring echo][exploring-echo].
+
+I have high hopes for [this URL router][vestigo-main] to be a fast, independent 
+url router for various golang based web services.  As I explained before, I have
+been struggling with a performant non-framework orient URL router that takes plain
+http.HandlerFunc definitions.  Below is a toy example application showing what
+[Vestigo][vestigo-main] can do:
+
+{% highlight go %}
+package main
+
+import (
+    "log"
+    "net/http"
+
+    "github.com/husobee/vestigo"
+)
+
+func main () {
+    // create a new vestigo router
+    router := vestigo.NewRouter()
+
+    // Define a GET /welcome route, and 
+    // specify the standard http.HandlerFunc 
+    // to run from that route
+    router.Get("/welcome", GetWelcomeHandler)
+
+    // Define a POST /welcome/:name where :name
+    // is a URL parameter that will be available 
+    // anywhere you have access to the http.Request
+    router.Post("/welcome/:name", PostWelcomeHandler)
+
+    // the router implements http.Handler
+    // so you just need to feed it into
+    // http.ListenAndServe, or any other handler
+    // that takes handlers such as common golang
+    // middlewares
+    log.Fatal(http.ListenAndServe(":1234", router))
+}
+
+// PostWelcomeHandler - Is an Implementation of http.HandlerFunc
+func PostWelcomeHandler(w http.ResponseWriter, r *http.Request) {
+    name := vestigo.Param(r, "name") // url params live in the request
+    w.WriteHeader(200)
+    w.Write([]byte("wecome " + name +"!"))
+}
+
+// PostWelcomeHandler - Is an Implementation of http.HandlerFunc
+func GetWelcomeHandler(w http.ResponseWriter, r *http.Request) {
+    w.WriteHeader(200)
+    w.Write([]byte("wecome!"))
+}
+{% endhighlight %}
+
+## Inspiration
+
+I have been inspired lately by the [Echo][echo-main] project, who are creating
+a small, unfancy golang based webframework with an awesomely fast router. I have
+been contributing ideas to them this past week, namely [this discussion.][405-pull]
+and I truely admire how quick of a router implementation they have been able to 
+achieve.
+
+That being said, I still had an itch that needed scratching.  Within Echo, Gin, 
+HttpRouter, there is one thing that really bugs me still... non-standard handler
+function signatures, and the requirement of using their context concept.
+
+I decided last night to create [vestigo][vestigo-main] to scratch that itch, and
+after a night of work, I feel like the results speak for themselves.  I took 
+a lot of ideas and routing implemenation from the [echo][echo-main] router, and 
+added concept of storing URL matched parameters on the http.Request in the URL
+RawQuery, much like the pat router does, instead of forcing implementers to 
+use a context object, or using a global map as some other routers do.
+
+# Performance
+
+Below is an ordered list of various other URL routers tested, the amount of time
+per routing operation, and the number of bytes and allocations of memory for each
+operation.  As [Vestigo][vestigo-main] isn't the fastest, it is holding it's own
+with the other routers out there, coming in fourth, and it is the first fastest
+completely independent low overhead router.
+
+{% highlight text %}
+Gin_GithubAll             39749 ns/op          0 B/op       0 allocs/op
+Echo_GithubAll            40348 ns/op          0 B/op       0 allocs/op
+HttpRouter_GithubAll      67171 ns/op      13792 B/op     167 allocs/op
+Vestigo_GithubAll         80976 ns/op       9264 B/op     339 allocs/op
+Ace_GithubAll            101551 ns/op      13792 B/op     167 allocs/op
+Denco_GithubAll          101808 ns/op      20224 B/op     167 allocs/op
+Kocha_GithubAll          179933 ns/op      26016 B/op     843 allocs/op
+HttpTreeMux_GithubAll    221756 ns/op      65856 B/op     671 allocs/op
+Rivet_GithubAll          256087 ns/op      84272 B/op    1079 allocs/op
+R2router_GithubAll       257402 ns/op      77328 B/op     979 allocs/op
+Possum_GithubAll         290861 ns/op      97440 B/op     812 allocs/op
+Vulcan_GithubAll         300177 ns/op      22736 B/op     609 allocs/op
+Bear_GithubAll           322018 ns/op      84560 B/op     943 allocs/op
+Tango_GithubAll          462216 ns/op      90323 B/op    2267 allocs/op
+GocraftWeb_GithubAll     489575 ns/op     131656 B/op    1686 allocs/op
+Beego_GithubAll          659363 ns/op     146272 B/op    2092 allocs/op
+Goji_GithubAll           602825 ns/op      56112 B/op     334 allocs/op
+GoJsonRest_GithubAll     619631 ns/op     137416 B/op    2737 allocs/op
+Macaron_GithubAll        750287 ns/op     201138 B/op    1803 allocs/op
+TigerTonic_GithubAll    1168838 ns/op     244640 B/op    5035 allocs/op
+Revel_GithubAll         1511440 ns/op     343936 B/op    5512 allocs/op
+Bone_GithubAll          2857703 ns/op     648016 B/op    8119 allocs/op
+Pat_GithubAll           5161129 ns/op    1546352 B/op   27435 allocs/op
+Martini_GithubAll       6372486 ns/op     228214 B/op    2483 allocs/op
+GorillaMux_GithubAll    6997254 ns/op     167232 B/op    2469 allocs/op
+Traffic_GithubAll       8561435 ns/op    2666096 B/op   21848 allocs/op
+GoRestful_GithubAll    16725309 ns/op     837832 B/op    6913 allocs/op
+{% endhighlight %}
+
+I do have a few ideas for getting the number of allocations and amount of memory
+per operation down even lower, that I am currently exploring.  Though this router
+isn't the fastest, it is respectable, moreover it allows the flexibility to move
+onto another router more easily than the other framework based routers out there.
+
+
+# TODOs
+
+I have a few items that I would like to see this router accomplish, enumerated:
+
+1. Support for RFC 6570 - URL Templates
+2. Optional Regular Expression Matching
+
+Please let me know what you think, and yes, I love to collaborate with people, 
+feel free to open issues/prs!
+
+
+[url-routers]: http://husobee.github.io/golang/url-router/2015/06/15/why-do-all-golang-url-routers-suck.html
+[exploring-echo]: http://husobee.github.io/golang/webframework/echo/2015/09/20/echo-web-framework.html
+[vestigo-main]: https://github.com/husobee/vestigo
+[echo-main]: https://github.com/labstack/echo
+[405-pull]: https://github.com/labstack/echo/pull/205
