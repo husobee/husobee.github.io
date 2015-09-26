@@ -1,0 +1,171 @@
+---
+layout: post
+title: "CORS in Golang"
+date: 2015-09-26 20:00:00
+categories: golang cors
+---
+
+## Dealing Ajax Cross Origin
+
+Fairly recently at work I had the need to perform some ajax calls from a 
+Single Page JS Application to a Go Web Service hosted on another domain, as
+the enterprise spans organizations, and BLAM, CORS Errors all over my browser
+console...
+
+CORS stands for Cross Origin Resource Sharing, and consists of a handshake of
+cryptic headers (usually) from a browser to a web api server.  The handshake 
+isn't well known, and usually people just "enable" cors in the web server, and 
+all is right with the world again.  Here is how the handshake breaks down:
+
+1. Javascript Application initiates a XHR Request
+2. Browser intercepts request and sends the web server a "Preflight" request
+  * Preflight consists of sending an OPTIONS request to the resource with 
+  "Origin" header set, and optionally other useful headers about the request which
+  is to come, such as the Request Method and potential Request Headers
+  * Server replies with the "Appropriate" response headers to the OPTIONS call
+  stipulating what *the browser* should allow.
+3. Browser gets the results of the Preflight and decides if the XHR Request should
+be allowed.
+4. Browser sends the request, or doesn't
+
+## Preflight Request
+
+This is really a strange thing.  Basically the API isn't in charge of restricting
+the request, the API tells the browser what the browser should or should not do.
+I had a hard time wrapping my head around this.  Below I will break down the 
+preflight CORS request in more detail:
+
+```
+OPTIONS /hello/4321 HTTP/1.1
+Origin: test.com
+Access-Control-Request-Method: GET
+Access-Control-Request-Headers: X-Z-Header
+```
+
+In the above, we initiate the preflight by making an HTTP call with OPTIONS to
+"/hello/4321" with an HTTP header "Origin: test.com".  The *Origin* header is 
+what tells the web server we have a Cross Origin request.  Effectively, you can
+think of this HTTP request as saying "Hey, I am coming from X, What can I do on
+this resource?"
+
+The two other headers sent in the request ask more about what this origin is 
+allowed to do.  *Access-Control-Request-Method* specifically calls out the method
+the user-agent is going to request in the follow-up XHR Request.  In our example
+we are doing a preflight for a "GET /hello/4321".
+
+The second Access-Control header is asking if this domain can use particular 
+headers in this request.
+
+## Preflight Response
+
+Responses to CORS Preflight requests tell the browser what the capabilities
+are for the script from a different origin than the api servers.  Below is a
+response to our request from above:
+
+```
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: X-Z-Header
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Origin: test.com
+Access-Control-Expose-Headers: X-Header, X-Y-Header
+Access-Control-Max-Age: 3600
+Allow: GET, HEAD, POST, TRACE
+Date: Sat, 26 Sep 2015 19:27:53 GMT
+Content-Length: 0
+Content-Type: text/plain; charset=utf-8
+```
+
+As any good OPTIONS call does, we get a 200 Status OK response from the server, 
+as well as an Allow header which specifies all the allowed methods for this 
+resource.  
+
+The CORS specific headers are explained here:
+
+* Access-Controll-Allow-Origin
+  * This is the first header the browser checks.  If the Server responds with 
+  this header, and the origin matches the origin given, or "*" then this origin 
+  is on the server's list of approved origins.  Without this, the browser MUST
+  not send the follow-up actual request, as it was denied
+* Access-Control-Allow-Credentials
+  * This header indicates that the user-agent is allowed to attach third party 
+  cookies, and or Authorization headers to the follow-up HTTP request, as the 
+  server states credentials are acceptable from that origin.
+* Access-Control-Max-Age
+  * This header indicates that the maximum age for cached content is set to 
+  this value.
+* Access-Control-Expose-Headers
+  * This header indicates the headers that can be exposed to the script from 
+  this origin.
+* Access-Control-Allow-Methods
+  * This header tells the browser the list of allowed methods for this origin in
+  the follow-up request.
+* Access-Control-Allow-Headers
+  * This header tells the browser the list of headers that are allowable in the
+  follow-up request.
+
+## Failure Conditions
+
+The CORS processing on the server follows a very simple pipeline enumerated:
+
+1. Check Origin header value if origin is allowed, if not allowed, stop, and 
+respond without any Access-Control headers in response.
+2. Check if the Origin is allowed to send credentials, if so, add "Access-Control-Allow-Credentials: true", 
+if not allowed, do not send Access-Control-Allow-Credentials header in response.
+3. Check the Access-Control-Request-Method, if requested method is allowed for a
+given resource, respond with either a list of all allowed methods for that origin,
+or the requested method.
+4. Check the Access-Control-Request-Headers, respond with an intersection of the
+requested headers and the allowed headers configured on the server.
+
+## Failures in Current Implementations
+
+In go, many try to "solve" cors with a Preflight middleware that has a global 
+CORS policy.  This flies in the face of the purpose of CORS, which is to protect
+Cross Origin *Resource* Sharing.  The spirit of CORS lives in the capabilities of
+the individual resources.  This means you MUST have a resource aware CORS
+implementation in my opinion.
+
+## CORS in vestigo
+
+I have implemented a per resource CORS policy, which extends from a global CORS
+policy in the [vestigo router project][vestigo].  Below is an example.
+
+```go
+    // Setting up router global  CORS policy
+    // These policy guidelines are overriddable at a per resource level shown below
+    router.SetGlobalCors(&vestigo.CorsAccessControl{
+        AllowOrigin:      []string{"*", "test.com"},
+        AllowCredentials: true,
+        ExposeHeaders:    []string{"X-Header", "X-Y-Header"},
+        MaxAge:           3600 * time.Second,
+        AllowHeaders:     []string{"X-Header", "X-Y-Header"},
+    })
+
+
+    // setting two methods on the same resource
+    router.Get("/welcome", GetWelcomeHandler)
+    router.Post("/welcome", PostWelcomeHandler)
+
+    // URL parameter "name"
+    router.Post("/welcome/:name", PostWelcomeHandler)
+
+    // Below Applies Local CORS capabilities per Resource (both methods covered)
+    // by default this will merge the "GlobalCors" settings with the resource
+    // cors settings.  Without specifying the AllowMethods, the router will 
+    // accept any Request-Methods that have valid handlers associated
+    router.SetCors("/welcome", &vestigo.CorsAccessControl{
+        AllowMethods: []string{"GET"}, // only allow cors for this resource on GET calls
+        AllowHeaders: []string{"X-Header", "X-Z-Header"}, // Allow this one header for this resource
+    })
+```
+
+It should be immediately obvious how you can specifically have more fine grained
+control of sensitive endpoints.  A benefit of using the vestigo router with CORS
+is, by default vestigo understands the abilities of the resources as it is doing
+the routing and knows which methods are already implemented or not.
+
+I have found this implementation of CORS in golang the most sane implementation 
+and allows for you to follow the CORS specification better.
+
+[vestigo]: [https://github.com/husobee/vestigo]
