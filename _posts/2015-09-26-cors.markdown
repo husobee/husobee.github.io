@@ -37,9 +37,13 @@ preflight CORS request in more detail:
 
 ```
     OPTIONS /hello/4321 HTTP/1.1
+
     Origin: test.com
+
     Access-Control-Request-Method: GET
+
     Access-Control-Request-Headers: X-Z-Header
+
 ```
 
 In the above, we initiate the preflight by making an HTTP call with OPTIONS to
@@ -64,16 +68,27 @@ response to our request from above.
 
 ```
     HTTP/1.1 200 OK
+
     Access-Control-Allow-Credentials: true
+
     Access-Control-Allow-Headers: X-Z-Header
+
     Access-Control-Allow-Methods: GET
+
     Access-Control-Allow-Origin: test.com
+
     Access-Control-Expose-Headers: X-Header, X-Y-Header
+
     Access-Control-Max-Age: 3600
+
     Allow: GET, HEAD, POST, TRACE
+
     Date: Sat, 26 Sep 2015 19:27:53 GMT
+
     Content-Length: 0
+
     Content-Type: text/plain; charset=utf-8
+
 ```
 
 As any good OPTIONS call does, we get a 200 Status OK response from the server, 
