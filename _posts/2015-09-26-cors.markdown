@@ -35,7 +35,7 @@ the request, the API tells the browser what the browser should or should not do.
 I had a hard time wrapping my head around this.  Below I will break down the 
 preflight CORS request in more detail:
 
-```
+```text
 OPTIONS /hello/4321 HTTP/1.1
 Origin: test.com
 Access-Control-Request-Method: GET
@@ -62,7 +62,7 @@ Responses to CORS Preflight requests tell the browser what the capabilities
 are for the script from a different origin than the api servers.  Below is a
 response to our request from above:
 
-```
+```text
 HTTP/1.1 200 OK
 Access-Control-Allow-Credentials: true
 Access-Control-Allow-Headers: X-Z-Header
