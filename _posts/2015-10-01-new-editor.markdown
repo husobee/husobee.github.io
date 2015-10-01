@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Method Not Found"
+title: "New Editor Experimentations"
 date: 2015-10-01 20:00:00
 categories: development ide
 ---
