@@ -1,0 +1,131 @@
+---
+layout: post
+title: "Gorp"
+date: 2015-10-05 20:00:00
+categories: golang database gorp
+---
+
+## Gorp - Go's "ORM"
+
+I hate writing SQL.  Always have.  I find the SQL Language repulsive, and reading 
+other developer's "clever" SQL makes me ill.  It is just about the ugliest syntax 
+I have ever seen.  By now you are getting the idea why something like GORP would 
+appeal to me.  Gorp creates a mapping between structs and sql database tables which
+allows for various dialects of sql database.  AWESOME!  I don't have to write SQL.
+
+# Example of gorp.v1
+
+Using gorp is easy.  Below is a toy example of a sql schema, and the corresponding 
+gorp instructions:
+
+```sql
+	create table car (
+		id varchar(36) not null primary key,
+		description text,
+		color varchar(10),
+		created datetime default now()
+	);
+```
+
+```go
+	// taken mainly from gorp's main README
+
+	type Car struct {
+		ID string
+		Description sql.NullString
+		Color sql.NullString
+		Created gorp.NullTime
+	}
+
+	func main(){
+    	db, _ := sql.Open("sqlite3", "/tmp/post_db.bin")
+
+	    // construct a gorp DbMap setting dialect to sqlite3
+	    dbmap := &gorp.DbMap{Db: db, Dialect: gorp.SqliteDialect{}}
+	    defer dbmap.Db.Close()
+
+	    // add a table, setting the table name to 'posts' and
+	    // specifying that the Id property is an auto incrementing PK
+	    dbmap.AddTableWithName(Car{}, "car").SetKeys(true, "ID")
+
+	    // create the table. in a production system you'd generally
+	    // use a migration tool, or create the tables via scripts
+	    dbmap.CreateTablesIfNotExists()
+
+	    var id = uuid.New()
+
+	    dbmap.Insert(&Car{
+	    	ID: id,
+	    	Description: "Old Beater",
+	    	Color: "Brown",
+	    })
+	    var car *Car
+	    dbmap.Get(car, id)
+	    // ...
+	}
+```
+
+The above is fairly readable, and understandable, and didn't take any sql in code
+which is great.  There are clear understandable helper methods such as Insert, Update,
+Delete, Get which covers a variety of common needs.  Insert, Update, Delete are 
+variadic which allows for multiple arguments, which is also excellent.
+
+# What is the Catch?
+
+Well, in our example car insertion, what would you expect the "Old Beater" car record 
+to have for a Created time?  I would expect it to be whatever the database time was 
+at insertion.  *Wrong!*
+
+If you look in the gorp code for [the Insert bindings][bind_insert] you can see gorp
+is being really smart and iterating over ALL of the columns to generate the sql code
+for the insertion.  This is unfortunate as the query ends up looking like this:
+
+```sql
+	insert into car (id, description, color, created) values ("<uuid>", "Old Beater", "Brown", NULL);
+```
+
+Which makes our Created time become NULL in the database, instead of what we were
+trying to get, which was the sql NOW() value...
+
+It is important to understand that gorp is doing an EXACT mapping, and not omitting nil values from the query.
+
+# Another Catch?
+
+If we look at [the Insert bindings][bind_insert] again, we also notice that the 
+variadic is being looped over, and each parameter is being inserted one at a time
+into the database.  This isn't very awesome for large numbers of parameters, as our 
+generated sql looks like this:
+
+```sql
+	insert into car (id, description, color, created) values ("<uuid>", "Old Beater", "Brown", NULL);
+	insert into car (id, description, color, created) values ("<uuid>", "Old Beater", "Grey", NULL);
+	insert into car (id, description, color, created) values ("<uuid>", "Old Beater", "Green", NULL);
+```
+
+Whereas we might have wanted them all to be included in one sql statement like this:
+
+```sql
+	insert into car (id, description, color, created) values 
+	("<uuid>", "Old Beater", "Brown", NULL),
+	("<uuid>", "Old Beater", "Grey", NULL),
+	("<uuid>", "Old Beater", "Green", NULL);
+```
+
+This causes extreme slowness if there are many items that are to be inserted at the
+same time.  I believe a few tweaks to gorp's insert/update/delete bindings could make
+these problems go away, but might introduce other issues.
+
+## Conclusions
+
+Though I am pointing out some issues I have seen in Gorp, I am not going to dismiss 
+it as a decent codebase for doing database mappings in golang.  I feel like with time
+it will become better, but I do think there is no substitute for well thought out sql
+queries in applications.  I have come across many instances where I needed to do some
+task in sql that isn't a base primative in Gorp, and still end up including sql in 
+my codebases, but, since I have been leaning on Gorp I end up getting sloppy and put 
+all of the custom sql statements required in in-opportune places in the code...
+
+	
+[gorp]: https://github.com/go-gorp/gorp/
+[bind_insert]: https://github.com/go-gorp/gorp/blob/v1/gorp.go#L352-L360
+
