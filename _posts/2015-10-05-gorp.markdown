@@ -18,16 +18,16 @@ allows for various dialects of sql database.  AWESOME!  I don't have to write SQ
 Using gorp is easy.  Below is a toy example of a sql schema, and the corresponding 
 gorp instructions:
 
-```sql
+{% highlight sql %}
 	create table car (
 		id varchar(36) not null primary key,
 		description text,
 		color varchar(10),
 		created datetime default now()
 	);
-```
+{% endhighlight %}
 
-```go
+{% highlight go %}
 	// taken mainly from gorp's main README
 
 	type Car struct {
@@ -63,7 +63,7 @@ gorp instructions:
 	    dbmap.Get(car, id)
 	    // ...
 	}
-```
+{% endhighlight %}
 
 The above is fairly readable, and understandable, and didn't take any sql in code
 which is great.  There are clear understandable helper methods such as Insert, Update,
@@ -80,9 +80,9 @@ If you look in the gorp code for [the Insert bindings][bind_insert] you can see 
 is being really smart and iterating over ALL of the columns to generate the sql code
 for the insertion.  This is unfortunate as the query ends up looking like this:
 
-```sql
+{% highlight sql %}
 	insert into car (id, description, color, created) values ("<uuid>", "Old Beater", "Brown", NULL);
-```
+{% endhighlight %}
 
 Which makes our Created time become NULL in the database, instead of what we were
 trying to get, which was the sql NOW() value...
@@ -96,20 +96,20 @@ variadic is being looped over, and each parameter is being inserted one at a tim
 into the database.  This isn't very awesome for large numbers of parameters, as our 
 generated sql looks like this:
 
-```sql
+{% highlight sql %}
 	insert into car (id, description, color, created) values ("<uuid>", "Old Beater", "Brown", NULL);
 	insert into car (id, description, color, created) values ("<uuid>", "Old Beater", "Grey", NULL);
 	insert into car (id, description, color, created) values ("<uuid>", "Old Beater", "Green", NULL);
-```
+{% endhighlight %}
 
 Whereas we might have wanted them all to be included in one sql statement like this:
 
-```sql
+{% highlight sql %}
 	insert into car (id, description, color, created) values 
 	("<uuid>", "Old Beater", "Brown", NULL),
 	("<uuid>", "Old Beater", "Grey", NULL),
 	("<uuid>", "Old Beater", "Green", NULL);
-```
+{% endhighlight %}
 
 This causes extreme slowness if there are many items that are to be inserted at the
 same time.  I believe a few tweaks to gorp's insert/update/delete bindings could make
@@ -118,11 +118,11 @@ these problems go away, but might introduce other issues.
 ## Conclusions
 
 Though I am pointing out some issues I have seen in Gorp, I am not going to dismiss 
-it as a decent codebase for doing database mappings in golang.  I feel like with time
+it as a decent code base for doing database mappings in golang.  I feel like with time
 it will become better, but I do think there is no substitute for well thought out sql
 queries in applications.  I have come across many instances where I needed to do some
-task in sql that isn't a base primative in Gorp, and still end up including sql in 
-my codebases, but, since I have been leaning on Gorp I end up getting sloppy and put 
+task in sql that isn't a base primitive in Gorp, and still end up including sql in 
+my code bases, but, since I have been leaning on Gorp I end up getting sloppy and put 
 all of the custom sql statements required in in-opportune places in the code...
 
 	
