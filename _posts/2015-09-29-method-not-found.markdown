@@ -14,25 +14,25 @@ way of route matching is by glomming the method into a "matcher" and handling it
 way a route not found is handled.  Returning a 404 or Resource Not Found, is NOT the same as 
 a 405, or Method Not Allowed.  Lets take an example:
 
-```go
+{% highlight go %}
     router.Get("/welcome", GetWelcomeHandler)
     router.Post("/welcome", PostWelcomeHandler)
-```
+{% endhighlight %}
 
 Here we are specifying one resource with two methods, GET and POST, that are served by different
 handlers, GetWelcomeHandler, and PostWelcomeHandler respectively.  What is the proper behavior when 
 a user-agent makes the following request to the server:
 
-```
+{% highlight text %}
     PUT /welcome HTTP/1.1
-```
+{% endhighlight %}
 
 Most URL routers fail miserably with this type of request setup as shown above.  I have personally witnessed
 Gorilla Mux/Pat, and others respond with the following:
 
-```
+{% highlight text %}
     HTTP/1.1 404 Not Found
-```
+{% endhighlight %}
 
 ## What is the problem
 
@@ -49,10 +49,10 @@ in our example *"/welcome"* does exist as a resource, that resource being the ou
 Even though it is hard, we need to give proper error messages back to callers.  In our example above, we should be
 giving the caller back this as a response:
 
-```
+{% highlight text %}
     HTTP/1.1 405 Method Not Allowed
     Allow: GET, POST
-```
+{% endhighlight %}
 
 Clearly, the response indicates firstly nothing about the resource being Not Found which is not true.  Furthermore 
 it is clear to the caller what methods *ARE* allowed for this resource.  This is of huge significance in working toward
