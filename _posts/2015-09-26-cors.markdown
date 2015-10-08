@@ -127,7 +127,7 @@ implementation in my opinion.
 I have implemented a per resource CORS policy, which extends from a global CORS
 policy in the [vestigo router project][vestigo].  Below is an example.
 
-```go
+{% highlight go %}
     // Setting up router global  CORS policy
     // These policy guidelines are overriddable at a per resource level shown below
     router.SetGlobalCors(&vestigo.CorsAccessControl{
@@ -154,7 +154,7 @@ policy in the [vestigo router project][vestigo].  Below is an example.
         AllowMethods: []string{"GET"}, // only allow cors for this resource on GET calls
         AllowHeaders: []string{"X-Header", "X-Z-Header"}, // Allow this one header for this resource
     })
-```
+{% endhighlight %}
 
 It should be immediately obvious how you can specifically have more fine grained
 control of sensitive endpoints.  A benefit of using the vestigo router with CORS

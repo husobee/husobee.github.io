@@ -288,9 +288,12 @@ In conclusion, I would like to say that everyone's design ideas are different ab
 is something that will use Pat's URL Query String rewriting, and HTTPRouter's Radix Tree matching.  Maybe that will be something I can make ;)
 
 
+*UPDATE* - I have followed through on the above conclusion and created  [Vestigo][vestigo]!
+
 [net-http-servemux]: http://golang.org/pkg/net/http/#ServeMux
 [net-http-servemux-code]: http://golang.org/src/net/http/server.go?s=41918:42043#L1411
 [gorilla-mux]: http://www.gorillatoolkit.org/pkg/mux
 [gorilla-pat]: http://www.gorillatoolkit.org/pkg/pat
 [httprouter]: https://github.com/julienschmidt/httprouter
 [rfc2616]: http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+[vestigo]: https://husobee.github.io/golang/urlrouter/vestigo/2015/09/22/vesigo.html
