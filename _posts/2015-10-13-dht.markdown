@@ -1,0 +1,76 @@
+---
+layout: post
+title: "Kademlia - Distributed Hash Table - Part 1"
+date: 2015-10-13 20:00:00
+categories: dht kademlia distributed key value
+---
+
+# What is Kademlia
+
+Lately I have been interested in distributed key value stores.  Mainly I have been investigating
+kademlia for it's simplicity.  In this blog I will attempt to explain how kademlia works, and some 
+of the obvious benefits of using a peer to peer distributed hash table in your applications.
+
+## The Node
+
+In a peer to peer overlay network you need nodes to make a network.  A node in our discussion is a 
+network server.  By server I mean a piece of software that accepts network communications and does things
+based on those communications.  Below is a simple representation of what a node in a Kademlia DHT looks like:
+
+{% highlight go %}
+
+	// IDLength - The lengths of the IDs are important, as it will define the NodeID, Key, 
+	// and routing table datastructures.  In Kademlia proper 160bit digests are used for all
+	// of these, so that is what we will use here, 20 bytes or 160 bits
+	const IDLength = 20
+
+	// NodeID - type to hold and operate on a Kademlia node id.  NodeIDs should be uniformly 
+	// random within the network, and should be randomly generated every time a node enters 
+	// the network.  The NodeID is very important in the routing functionality of Kademlia.
+	type NodeID [IDLength]byte
+
+	// Contact - type to hold a contact data structure.  A Contact consists of 3 attributes, a
+	// NodeID, IPv4 Address, and UDP Port Number, and will allow us to route to a particular node
+	// in our network.
+	type Contact struct {
+		NodeID NodeID
+		Addr string
+	}
+
+	// Bucket - buckets hold contacts that this node has knowledge of, and is used in the
+	// node's routing.  A bucket holds k nodes, where k is a number in which it is unlikely 
+	// all contacts in one bucket will disappear in one hour. (pretty vauge, right??)
+	type Bucket [VaugeKConst]*Contact
+
+	// VaugeKContstant - K is our strange constant that will tell us how big our bucket should be. 
+	// In examples I have seen it statically defined as 20, but I feel this would dedicate another 
+	// entire blog to figure out how to get this statistically correct.
+	const VaugeKConstant = 20
+
+	// Router - type to hold and operate a routing table for lookups.  The router will contain one 
+	// bucket list for every single bit within the 
+	type Router struct { 
+		Self *Contact
+		KBuckets [IDLength*8]Buckets // We need one bucket per bit of our ID, so 8bits/byte * 20 bytes
+	}
+{% endhighlight %}
+
+As you can see, the datastructures of kademlia are very simple, and not very hard to grasp. (well all 
+except for that strange K constant, which i am going to have to learn more about...)  We are creating
+a very simple router, that keeps a table of how to find particular nodes of interest.  
+
+## Finding Nodes in Kademlia
+
+As you would probably guess, every single node in a kademlia network doesn't know of every other node from 
+the get go.  Nodes are found on the network.  As new nodes register, make store and find connections to 
+_this_ node, this node includes those nodes within it's routing table described above, until the KBucket 
+items start to fill up with Contacts.  At that point Contacts are selectively removed and organized within
+the KBucket lists.
+
+To find a node by an id, _this_ node makes requests to contacts it knows about from the routing table _this_ 
+node knows about, asking for the location of the node it is searching for.  Those nodes perform a lookup 
+within thier own routing tables to find nodes that are "close" to the requested id.  _this_ node then stores 
+these new contacts, and iteratively asks those nodes if they know of the requested node.  This happens until
+the node is found.
+
+More to come in future posts.
