@@ -102,3 +102,4 @@ that is a very useful aspect of this web framework.
 [not-allow]: https://husobee.github.io/golang/vestigo/405/2015/09/29/method-not-found.html
 [vestigo]: https://github.com/husobee/vestigo
 [whaaa]: https://github.com/VividCortex/siesta/blob/b371862cfbc0199774d3a711e7e53da6bc8cdf2c/service.go#L126-L128
+[router-hate]: https://husobee.github.io/golang/url-router/2015/06/15/why-do-all-golang-url-routers-suck.html
