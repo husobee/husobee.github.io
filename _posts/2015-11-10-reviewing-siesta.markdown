@@ -87,8 +87,7 @@ Looking closer at this router bolt on, I have [discovered this][whaaa] which pai
 me a bit to talk about.  So not only does the HTTPRouter code alloc key value pair
 space on the heap for storing the URL parameters, but then siesta *also* allocs 
 heap space to *also* store the parameters within the form data, like a Pat or 
-vestigo does.  Are you mad?? You have a context, use it in the router like Echo
-does.
+vestigo does.
 
 ## Credit Where Due
 
