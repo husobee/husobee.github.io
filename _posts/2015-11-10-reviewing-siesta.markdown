@@ -32,7 +32,7 @@ in parallel.
 
 As I have griped about in [a previous blog entry][router-hate] siesta invented a
 new function signature for their handlers, which requires an implementation of 
-their context from above to be passed in.  The do however [have a wrapping] concept
+their context from above to be passed in.  The do however have a wrapping concept
 though in practice if you are using this framework, likely you are using all the 
 features including the context in your handlers, so it seems silly to me (maybe 
 the middlewares only need the context??) to not just implement the siesta standard
