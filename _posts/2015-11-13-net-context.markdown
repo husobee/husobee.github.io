@@ -36,7 +36,7 @@ data for every step of the pipeline.
 
 In short, you can think of net.Context as a stackable context.  Take the following:
 
-{% highlight golang %}
+{% highlight go %}
 	// we are "stacking" our new context with value below on top 
 	// of the "background" context which is just an empty context
 	baseCTX := context.WithValue(context.Background(), "requestID", 12345)
