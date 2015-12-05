@@ -86,12 +86,12 @@ A few thoughts on everything so far:
 
 * There is a lot of abstraction for the sake of abstraction in this flow
   * Abstraction is fine if reasonable, this is becoming unreasonable
-  * [A little copying is better than a little dependency][http://go-proverbs.github.io/]
+  * [A little copying is better than a little dependency][proverbs]
 * There are a lot of hidden assumptions that get lost along the way,
   * Looking at RedisPool in [redigo][redis-pool], Pool does a lot of stuff
     and has a lot of options, that are hidden in our app.
   * We don't have fine grained control over many options
-  * [Make the zero value useful][http://go-proverbs.github.io/]
+  * [Make the zero value useful][proverbs]
 * Interfaces describe behaviors, Structs describe state
   * redigo would be much more powerful (and mockable) if Pool was an Interface
     instead of a struct.
@@ -130,7 +130,7 @@ connections to be setup, and reaped basically as we go.  I believe there is some
 tuning we could do with MaxIdle to not have to reap basically every connection 
 we make also.
 
-This really flies in the face of Rob Pike's [go-proverbs][http://go-proverbs.github.io/]
+This really flies in the face of Rob Pike's [go-proverbs][proverbs]
 specifically "Making the zero value useful."  In my opinion standard operations 
 of a connection "pool" should default to a sane MaxActive connection limit, as
 opposed to defaulting to infinity.  This doesn't even resemble a pool under load
@@ -141,6 +141,8 @@ Moreover, in reviewing redigo, there is a lot of synchronization, with mutexes
 that would be better suited using goroutines and channels. Specifically going 
 against "Channels orchestrate; mutexes serialize." and "Don't communicate by sharing memory, share memory by communicating."
 
+
+[proverbs]: http://go-proverbs.github.io/
 [locust]: http://locust.io/
 [behavior]: http://husobee.github.io/automate/behavior/testing/2015/06/13/automate-behaviors.html
 [redigo]: https://github.com/garyburd/redigo
