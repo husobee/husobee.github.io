@@ -76,7 +76,7 @@ not many knobs to turn.
 
 Below is the sample application to test:
 
-{% go highlight %}
+{% highlight go %}
 package main
 
 import (
