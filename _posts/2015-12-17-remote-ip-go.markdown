@@ -145,3 +145,36 @@ an ip address that is our first globally visible IP address the request originat
 from.  Granted this isn't perfect, because a malicious user could clearly create
 fake X-Forwarded-For header records to play chaos monkey, but I guess nothing in
 life is perfect.
+
+
+## UPDATE!
+
+After hearing from a friend about this mechanism it is pretty clear the above
+mechanism could be exploited by griefers, he had a suggestion.  Instead of walking
+from the left to right, walk backwards through the number of ip addresses by the
+number of proxies you have in your environment to the internet.  That way, you 
+will be adverse to any mucking with the `X-Forwarded-For` header by the client. 
+Below is the updated version of the Above implementing this:
+
+{% highlight go %}
+
+func getIPAdress(r *http.Request) string {
+    for _, h := range []string{"X-Forwarded-For", "X-Real-Ip"} {
+        addresses := strings.Split(r.Header.Get(h), ",")
+        // march from right to left until we get a public address
+        // that will be the address right before our proxy.
+        for i := len(addresses); i > 0; i-- {
+            ip := addresses[i]
+            // header can contain spaces too, strip those out.
+            realIP := net.ParseIP(strings.Replace(ip, " ", "", -1))
+            if !realIP.IsGlobalUnicast() && !isPrivateSubnet(realIP) {
+                // bad address, go to next
+                continue
+            }
+            return ip
+        }
+    }
+    return ""
+}
+
+{% endhighlight %}
