@@ -163,7 +163,7 @@ func getIPAdress(r *http.Request) string {
         addresses := strings.Split(r.Header.Get(h), ",")
         // march from right to left until we get a public address
         // that will be the address right before our proxy.
-        for i := len(addresses); i > 0; i-- {
+        for i := len(addresses) -1 ; i >= 0; i-- {
             ip := addresses[i]
             // header can contain spaces too, strip those out.
             realIP := net.ParseIP(strings.Replace(ip, " ", "", -1))
