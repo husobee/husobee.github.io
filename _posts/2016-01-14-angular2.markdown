@@ -34,7 +34,7 @@ annotation you get for free with TypeScript.
 
 TypeScript with Angular 2 allows you to do the following:
 
-{% highlight typescript %}
+{% highlight ts %}
 
 import {Component, Inject} from 'angular2/core';
 import {UserService} from './user.service';
@@ -76,7 +76,7 @@ You don't need to use the ugly angular 1 syntax for creating controllers.
 With Angular 1 you needed to touch about 4-5 files to "install" a new Controller.
 Not the case with Angular 2, the below is the entirety of the `boot.ts` bootstrapping code:
 
-{% highlight typescript %}
+{% highlight ts %}
 import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
@@ -133,7 +133,7 @@ How easy was that, we just use the `bootstrap` function, and point it at our roo
 
 Our main `App` entry point is ridiculously simple:
 
-{% highlight typescript %}
+{% highlight ts %}
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Registration} from './user.component';
