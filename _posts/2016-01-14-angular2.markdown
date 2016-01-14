@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A look at Angular 2"
-date: 2016-01-08 08:00:00
+date: 2016-01-14 08:00:00
 categories: javascript angular2
 ---
 
