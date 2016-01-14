@@ -1,0 +1,178 @@
+---
+layout: post
+title: "A look at Angular 2"
+date: 2016-01-08 08:00:00
+categories: javascript angular2
+---
+
+## Background
+
+For a while now, when I need to make a web based user interface I lean pretty 
+hard on javascript single page application (SPA) frameworks to do the heavy
+lifting, allowing me to focus on what matters for my application.  My goto
+front end framework for the past two years has been [Google's Angular][angular1]
+which comes with a lot of nice things like data bindings, templating, model/view/controller
+(MVC) separations, factories and services to name a few things.  
+
+Very recently [Angular 2][angular2] went into public Beta so I decided now 
+is the time to learn how it differs, and how I could leverage this modified 
+SPA framework.
+
+## Differences Between 1 and 2
+
+There are several differences between Angular 1 and Angular 2.  Herein I try to 
+explain what I am most excited about in Angular 2 and how it differs from Angular 1.
+
+### TypeScript (and Annotations)
+
+Angular 2 _can be_ very TypeScript oriented.  I say this because you can write 
+your entire application in TypeScript, and angular then transpiles to ES5/ES6
+when rendering.  This being said, If you get angry at the sun being too bright,
+or kids playing on your lawn, you can opt to write all of your Component code in
+plain javascript and not take advantage of the amazing capabilities of code 
+annotation you get for free with TypeScript.
+
+TypeScript with Angular 2 allows you to do the following:
+
+{% highlight typescript %}
+
+import {Component, Inject} from 'angular2/core';
+import {UserService} from './user.service';
+
+@Component({
+    selector: 'registration',
+    templateUrl: 'templates/registration.html',
+    providers: [UserService]
+})
+export class Registration {
+    _userService: UserService
+    constructor(
+        @Inject(UserService) UserService
+    ){
+        this._userService = UserService
+    }
+}
+
+{% endhighlight %}
+
+With the _decorator_ syntax you are able to specify meta-data about the component
+you are building, such as what html tag selector you wish to bind this component
+(think controller in angular 1) to, as well as template information and what 
+services, or _providers_, you want to inject into the application.
+
+With TypeScript you are also allowed to create classes which have constructors. 
+In our example above we are `@Inject`-ing a `UserService` dependency and set that
+singleton to a variable inside the class which is typed as UserService.
+
+### Components not Controllers
+
+As shown in the previous section an angular 2 application is composed of views,
+a tree of components, wherein you can inject dependencies, and that is basically it.
+
+You don't need to use the ugly angular 1 syntax for creating controllers.
+
+### Easy Bootstrap
+
+With Angular 1 you needed to touch about 4-5 files to "install" a new Controller.
+Not the case with Angular 2, the below is the entirety of the `boot.ts` bootstrapping code:
+
+{% highlight typescript %}
+import {bootstrap} from 'angular2/platform/browser';
+import {ROUTER_PROVIDERS} from 'angular2/router';
+import {HTTP_PROVIDERS} from 'angular2/http';
+import {App} from './app.component';
+
+// bootstrap our application
+bootstrap(App, [ROUTER_PROVIDERS, HTTP_PROVIDERS]);
+
+{% endhighlight %}
+
+How easy was that, we just use the `bootstrap` function, and point it at our root 
+`App` component, providing it the dependencies needed for it to run.  Then in our 
+`index.html` file all we need to do is below:
+
+{%highlight html%}
+<html>
+
+  <head>
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/typescript/lib/typescript.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="./node_modules/angular2/bundles/http.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script>
+        System.config({
+            transpiler: 'typescript',
+            packages: {
+                'app': {
+                    defaultExtension: 'ts'}
+            } 
+        });
+        System.import('app/boot').then(null, console.error.bind(console));
+        <!--
+            //We are using System.js to perform the bootstrapping of the angular app
+            //This will grab our boot.ts file, transpile it and load our `App`.
+        -->
+    </script>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <base href="./"> <!-- used for the router to know the base reference -->
+  <body>
+    <!--
+        // we merely need to provide an "app" tag for our app to load into,
+        // this is where the Component "selector" comes into play.
+    -->
+        <app></app>
+  </body>
+</html>
+
+{% endhighlight %}
+
+Our main `App` entry point is ridiculously simple:
+
+{% highlight typescript %}
+import {Component} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Registration} from './user.component';
+import {HTTP_PROVIDERS} from 'angular2/http';
+import {UserService} from './user.service';
+
+@Component({
+    selector: 'app', /* This is the html tag selector for our app in index.html */
+    templateUrl: 'templates/main.html', /* the app's template view */
+    directives: [ROUTER_DIRECTIVES], /* directives we wish to load */
+    providers: [HTTP_PROVIDERS, UserService] /* services we depend on */
+})
+@RouteConfig([
+    { path: '/registration', name: 'Registration', component:Registration }
+])
+
+export class App {
+}
+{% endhighlight %}
+
+You can see from the main app definitions that this is organized exactly as a component
+is organized, because angular 2 applications are a tree of components.  
+
+Also notice how Routing is done in angular 2, which I think is pretty slick.  Routing
+is just metadata configuration with the @RouteConfig decorator.
+
+## Conclusions
+
+I am very happy that I took a day to learn all about Angular 2.  I honestly
+feel like the folks at Angular got this version right.  A lot of the confusion
+that existed in Angular 1 was cleared up.  We should remember though, Angular 1
+has existed for years, and pre-dates the web standards (ES6, TypeScript) that the
+industry is moving towards.  Honestly, I am very proud of the Angular project, 
+specifically due to the forward thinking and willingness to not get bogged down 
+due to the shear size of Angular 1.  It is easy in my opinion to get entrenched in
+"I know what is right, cause I already did it" mentality.
+
+If you are looking for a modern, simple, sensible SPA framework give [Angular 2][angular2]
+a try.
+
+[angular1]: https://angularjs.org/
+[angular2]: https://angular.io/
