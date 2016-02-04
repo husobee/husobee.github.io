@@ -50,9 +50,9 @@ Just the basics of compose is really cool in of itself, the ability to create a
 service manifest for a project which coordinates many docker containers.  But, 
 compose offers us some goodies too:
 
-1. [Stacking Config Files][#stacking config files]
-2. [Smart Container State][#smart container state]
-3. [Wrappers around common docker commands][#wrapping docker]
+1. Stacking Config Files
+2. Smart Container State
+3. Wrappers around common docker commands
 
 
 ### stacking config files
