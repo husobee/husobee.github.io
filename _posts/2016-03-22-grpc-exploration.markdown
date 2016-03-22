@@ -103,7 +103,7 @@ package main
 
 type accountMigrationServer struct {}
 
-// PutAccount - this is our "implemenation" of our RPC, which takes a context as
+// PutAccount - this is our "implemention" of our RPC, which takes a context as
 // well as our AccountRequest as input and returns our AccountReply as output
 func (s *accountMigrationServer) PutAccount(ctx context.Context, in *AccountRequest) (*AccountReply, error) {
     // do stuff
