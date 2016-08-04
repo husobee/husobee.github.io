@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Protecting Personal Information"
-date: 2015-07-12 08:00:00
+date: 2016-07-12 08:00:00
 categories: personal-information encryption golang
 ---
 
