@@ -49,7 +49,7 @@ func (pq PriorityQueue) Swap(i, j int) {
 	pq[j].index = j
 }
 
-// Push - implemenetation of push for the heap interface
+// Push - implementation of push for the heap interface
 func (pq *PriorityQueue) Push(x interface{}) {
 	n := len(*pq)
 	item := x.(*Item)
@@ -71,27 +71,27 @@ func (pq *PriorityQueue) Pop() interface{} {
 
 At this point we have a working priority queue. We use `heap.Push` and `heap.Pop`
 to interface with the heap, and things are lovely. Until you try to use this in 
-a web application, that potentially has many goroutines trying to push and pop 
+a web application, that potentially has many go routines trying to push and pop 
 at the same time.
 
 Much like Golang's map implementation the `container.heap` implementation is not
-threadsafe, and is not threadsafe for a reason, the application knows better if 
-this implemenatation needs to be safe or not.  
+thread safe, and is not thread safe for a reason, the application knows better if 
+this implementation needs to be safe or not.  
 
-With this in mind, we need to protect this datastructure.
+With this in mind, we need to protect this data-structure.
 
 ## The Wrong Way
 
-The wrong way to try to protect this datastructure is to try to protect it within the 
+The wrong way to try to protect this data-structure is to try to protect it within the 
 implementation of the `heap.Interface` interface.  You might be tempted to use 
-channels for serialization of writes to the underlying datastructure.  What
-could go wrong, you can protect the physical underlying datastructure by having
-a single goroutine doing all of the writes to the datastructure, and being messaged from
-many goroutines.
+channels for serialization of writes to the underlying data-structure.  What
+could go wrong, you can protect the physical underlying data-structure by having
+a single go routine doing all of the writes to the data-structure, and being messaged from
+many go routines.
 
 {% highlight go %}
 
-// Push - implemenetation of push for the heap interface
+// Push - implementation of push for the heap interface
 func (pq *PriorityQueue) Push(x interface{}) {
 	pq.PushChannel <- x
 }
@@ -196,5 +196,5 @@ func watchHeapOps() chan bool {
 
 {% endhighlight %}
 
-This code now serializes the Push/Pops to the heap and should be threadsafe.
+This code now serializes the Push/Pops to the heap and should be thread safe.
 
