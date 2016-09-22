@@ -33,7 +33,7 @@ type Result struct {
 
 // WaitForResult - this is a wrapper function to serve as a helper to listen on the
 // result channel of the work item passed in, will timeout in 2 seconds
-func (w \*WorkRequest) WaitForResult() (Result, error) {
+func (w *WorkRequest) WaitForResult() (Result, error) {
 	select {
 	case <-time.After(2 * time.Second):
 		return Result{}, ErrTimeout
@@ -86,7 +86,7 @@ Zooming in on that particular code:
 
 // WaitForResult - this is a wrapper function to serve as a helper to listen on the
 // result channel of the work item passed in, will timeout in 2 seconds
-func (w \*WorkRequest) WaitForResult() (Result, error) {
+func (w *WorkRequest) WaitForResult() (Result, error) {
 	select {
 	case <-time.After(2 * time.Second):
 		return Result{}, ErrTimeout
@@ -110,7 +110,7 @@ we are testing the timeout on, and then closing the channel if the timeout expir
 
 // WaitForResult - this is a wrapper function to serve as a helper to listen on the
 // result channel of the work item passed in, will timeout in 2 seconds
-func (w \*WorkRequest) WaitForResult() (Result, error) {
+func (w *WorkRequest) WaitForResult() (Result, error) {
 	result := <-w.Ret
 	return result, result.Err
 }
