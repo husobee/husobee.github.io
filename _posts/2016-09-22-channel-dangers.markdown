@@ -104,7 +104,7 @@ when the worker tries to write to v.Ret, since no go-routines are listening for
 that channel, the worker becomes blocked.
 
 A much better solution is to bring the timeout check closer to the work in which
-we are testing the timeout on, and then closing the channel if the timeout expires:
+we are testing the timeout on, and then sending the error on the channel if the timeout expires:
 
 {% highlight go %}
 
