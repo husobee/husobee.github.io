@@ -66,7 +66,7 @@ if you start getting into really big numbers you start loosing granularity, and
 the smaller numbers start getting eaten by the bigger numbers:
 
 {% highlight text %}
->>> 1e16 *(1.01 - .99) - 1
+>>> 1e16 *(1.01 - 0.99) - 0.01
 200000000000000.2
 {% endhighlight %}
 
