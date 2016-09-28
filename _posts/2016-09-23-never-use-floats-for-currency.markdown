@@ -15,7 +15,7 @@ the word digit is a bi-word for finger.
 
 Computers count and perform math in base two or binary.  This means there are 2
 digits to represent all numbers.  2^3 is the fourth position, 2^2 is the third 
-position and so on.  110 is 1*2^2 + 1*2^1 + 0*2^1 = 6 in denary.
+position and so on.  110 is 1 * 2^2 + 1 * 2^1 + 0 * 2^1 = 6 in denary.
 
 ### Onward
 
@@ -48,7 +48,7 @@ I sell 165 apples at $1.40 per apple.  My accounting software uses floating poin
 numbers for the calculation.
 
 {% highlight text %}
->>> 165*1.40
+>>> 165 * 1.40
 230.99999999999997
 {% endhighlight %}
 
@@ -66,7 +66,7 @@ if you start getting into really big numbers you start loosing granularity, and
 the smaller numbers start getting eaten by the bigger numbers:
 
 {% highlight text %}
->>> 1e16 *(1.01 - 0.99) - 0.01
+>>> 1e16 * (1.01 - 0.99) - 0.01
 200000000000000.2
 {% endhighlight %}
 
@@ -82,7 +82,7 @@ into these floating point approximation issues, as you are no longer performing
 approximations.  Here are the above examples using integer cents instead:
 
 {% highlight text %}
->>> 165*140
+>>> 165 * 140
 23100
 >>> 101 - 99
 2
