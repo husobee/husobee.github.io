@@ -70,7 +70,7 @@ type ipRange struct {
 // inRange - check to see if a given ip address is within a range given
 func inRange(r ipRange, ipAddress net.IP) bool {
     // strcmp type byte comparison
-    if bytes.Compare(ipAddress, r.start) >= 0 && bytes.Compare(ipAddress, r.end) {
+    if bytes.Compare(ipAddress, r.start) >= 0 && bytes.Compare(ipAddress, r.end) < 0 {
         return true
     }
     return false
