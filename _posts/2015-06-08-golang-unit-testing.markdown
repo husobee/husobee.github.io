@@ -31,7 +31,7 @@ import "database/sql"
 var sqlOpen = sql.Open
 
 func main(){
-    db, err := sql.Open("sqlite3", "~/my.db")
+    db, err := sqlOpen("sqlite3", "~/my.db")
     if err != nil {
         panic()
     }
