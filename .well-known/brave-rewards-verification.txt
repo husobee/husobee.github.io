@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: husobee.github.io
+Token: bf48696f4426c55b26dd5fd45dd69226632aac5e54c75a9b69addf9b88c7ccaf
