@@ -167,7 +167,7 @@ sql: Scan error on column index 1: unsupported driver -> Scan pair: int64 -> *ma
 I am sorry, your scanning failed...better luck next time!
 {% endhighlight %}
 
-Shucks.  I guess we need some glue to make database/sql understand how to put the value from the database into our data structure.  That glue is the scanner interface.  Much like the Valuer interface, we need to perform some conversions to get the data from the database into our structures.  Below is our implementation of a valuer for our YesNoEnum type:
+Shucks.  I guess we need some glue to make database/sql understand how to put the value from the database into our data structure.  That glue is the scanner interface.  Much like the Valuer interface, we need to perform some conversions to get the data from the database into our structures.  Below is our implementation of a scanner for our YesNoEnum type:
 
 {% highlight go %}
 
