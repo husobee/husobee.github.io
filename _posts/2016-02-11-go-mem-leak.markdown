@@ -3,6 +3,7 @@ layout: post
 title: "golang memory leak"
 date: 2016-02-11 08:00:00
 categories: golang memory leak
+description: "Debugging a production Go service that leaked goroutines and grew its heap without bound, traced to an http.Client call."
 ---
 
 ## background

@@ -3,6 +3,7 @@ layout: post
 title: "Vim + Tmux = IDE"
 date: 2015-06-10 20:00:00
 categories: ide vim tmux
+description: "Why vim plus tmux on a remote server is my favorite IDE for pair programming and genuinely collaborative remote development."
 ---
 
 What defines a good IDE?  What setup will allow you to pair with coworkers?  How can one collaborate with others in a sane way?

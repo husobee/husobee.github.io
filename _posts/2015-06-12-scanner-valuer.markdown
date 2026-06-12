@@ -3,6 +3,7 @@ layout: post
 title: "Scanners and Valuers with Go"
 date: 2015-06-12 20:00:00
 categories: golang database
+description: "Persisting custom Go types to a SQL database by implementing the database/sql Scanner and Valuer interfaces."
 ---
 
 Data structure serialization in databases can be difficult with golang types.

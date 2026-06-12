@@ -3,6 +3,7 @@ layout: post
 title: "Linux Tutorials"
 date: 2016-01-17 08:00:00
 categories: linux tutorials
+description: "A from-zero, living guide to Linux for newcomers, starting with what the command line actually is and how the shell works."
 ---
 
 ## Linux Tutorials

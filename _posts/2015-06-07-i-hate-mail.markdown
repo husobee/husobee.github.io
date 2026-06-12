@@ -3,6 +3,7 @@ layout: post
 title: "I Hate Email"
 date: 2015-06-07 15:30:00
 categories: email mail-server rant dmarc dkim spf
+description: "Self-hosting email in the modern era: why my mail kept landing in spam, and the MX, reverse DNS, SPF, DKIM and DMARC reality nobody warns you about."
 ---
 So, I realized I hate email.
 

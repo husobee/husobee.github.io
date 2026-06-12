@@ -3,6 +3,7 @@ layout: post
 title: "Moon Phase Pebble App Public"
 date: 2015-06-29 20:00:00
 categories: pebble moon-phase
+description: "Releasing my open-source moon-phase watchface on the Pebble marketplace, and why I enjoy building for the Pebble watch."
 ---
 
 Today I finally decided to make public my [pebble moon phase app][app] on the 

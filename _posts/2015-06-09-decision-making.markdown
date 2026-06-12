@@ -3,6 +3,7 @@ layout: post
 title: "Decision Making"
 date: 2015-06-09 20:00:00
 categories: choices flying
+description: "What preflighting an airplane taught me about decision making: gathering facts, weighing risk, and knowing when to call it off."
 ---
 
 We are all confronted with decisions, every minute of every day.  How do you play the what-ifs in your head?

@@ -3,6 +3,7 @@ layout: post
 title: "Golang http middleware implementation in 7 LOC"
 date: 2015-12-22 08:00:00
 categories: golang http middleware
+description: "A minimal, magic-free HTTP middleware chaining scheme for Go in just seven lines of code."
 ---
 
 I was recently asked, how I would implement a http middleware scheme in golang.

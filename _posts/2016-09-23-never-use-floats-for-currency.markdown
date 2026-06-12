@@ -3,6 +3,7 @@ layout: post
 title: "Never Use Floats for Money"
 date: 2016-09-23 05:00:00
 categories: money float
+description: "Why floating point can't exactly represent money: a base-2 versus base-10 explanation of why you should never use floats for currency."
 ---
 
 ### Very basic background

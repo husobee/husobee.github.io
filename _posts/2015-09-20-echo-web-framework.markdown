@@ -3,6 +3,7 @@ layout: post
 title: "Exploring Echo.. echo... echo..."
 date: 2015-09-20 20:00:00
 categories: golang webframework echo
+description: "A look at the Echo web framework's router, one of the fastest in Go, backed up with benchmark numbers."
 ---
 
 As some recall, I have already expressed my [views of certain golang URL routers][url_routers] before, and

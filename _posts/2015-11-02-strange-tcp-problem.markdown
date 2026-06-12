@@ -3,6 +3,7 @@ layout: post
 title: "TCP Strangeness with Elasticache"
 date: 2015-11-02 20:00:00
 categories: tcp keepalive timeout
+description: "Chasing down a mysterious 60-second 504 in a microservice, a TCP keepalive and idle-timeout mystery with Elasticache."
 ---
 
 # Connections Strangely Closing

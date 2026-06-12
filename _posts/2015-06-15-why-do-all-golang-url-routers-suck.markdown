@@ -3,6 +3,7 @@ layout: post
 title: "Why do I not like any Golang URL Routers?"
 date: 2015-06-15 20:00:00
 categories: golang url-router
+description: "A critical tour of Go URL routers, starting with net/http.ServeMux, and why none of them quite satisfy me."
 ---
 
 For those who don't know, URL routing is the practice of taking a URL partial, and mapping

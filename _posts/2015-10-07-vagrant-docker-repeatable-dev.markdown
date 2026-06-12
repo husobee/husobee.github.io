@@ -3,6 +3,7 @@ layout: post
 title: "Vagrant and Docker, repeatable development"
 date: 2015-10-07 20:00:00
 categories: vagrant docker development
+description: "Building repeatable development environments with Vagrant and Docker so your local setup actually matches production."
 ---
 
 ## Repeatable Development Environments

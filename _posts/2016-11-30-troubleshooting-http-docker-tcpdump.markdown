@@ -3,6 +3,7 @@ layout: post
 title: "Troubleshooting HTTP with tcpdump in Docker"
 date: 2016-11-30 08:00:00
 categories: http tcpdump docker
+description: "Setting up tcpdump and Wireshark to capture and troubleshoot the HTTP traffic flowing between Docker containers."
 ---
 
 Today I decided to focus on something I take for granted, that possibly many 

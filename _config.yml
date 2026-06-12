@@ -6,6 +6,31 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://husobee.github.io" # the base hostname & protocol for your site
 github_username:  husobee
+lang: en
+
+# SEO / identity (consumed by jekyll-seo-tag)
+author:
+  name: husobee
+  url: https://github.com/husobee
+social:
+  name: husobee
+  links:
+    - https://github.com/husobee
+# To enable large-image Twitter/X cards attributed to an account, add:
+# twitter:
+#   username: yourhandle
+#   card: summary_large_image
+# Default social-share image for every page; a per-page `image:` in front matter overrides it.
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /img/og-default.png
 
 # Build settings
 markdown: kramdown
+
+# Plugins (all whitelisted by GitHub Pages)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap

@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Safety in Rust"
+date: 2017-11-20 08:00:00
+categories: rust safety school
+description: "How Rust guarantees memory and concurrency safety with zero-cost abstractions: ownership, borrowing, and immutability by default."
+---
+
 # Safety in Rust
 
 ## Introduction

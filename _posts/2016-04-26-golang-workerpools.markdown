@@ -3,6 +3,7 @@ layout: post
 title: "Worker Pool in Golang"
 date: 2016-04-26 08:00:00
 categories: golang workerpool
+description: "Building a worker pool in Go, explained through the analogy of workers in a fast-food kitchen reading from a queue."
 ---
 
 It is pretty often that I come across reasons to require a worker pool 

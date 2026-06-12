@@ -3,6 +3,7 @@ layout: post
 title: "Make Hard the Norm"
 date: 2015-10-31 20:00:00
 categories: hard flying
+description: "If you want to get better at anything, make the hard thing your normal: lessons from flying into a challenging airport."
 ---
 
 # Want to get better?

@@ -3,6 +3,7 @@ layout: post
 title: "Remote IP Address with Go"
 date: 2015-12-17 08:00:00
 categories: golang ip-address
+description: "Getting the real client IP in a Go web service behind a proxy: why RemoteAddr isn't enough and how X-Forwarded-For helps."
 ---
 
 # We need remote ips

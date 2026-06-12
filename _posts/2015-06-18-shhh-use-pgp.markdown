@@ -3,6 +3,7 @@ layout: post
 title: "It's a Secret... Use GPG."
 date: 2015-06-18 20:00:00
 categories: security gpg
+description: "An introduction to GPG and OpenPGP: the history of PGP, the asymmetric-key math behind it, and why it still matters."
 ---
 
 GNU Privacy Guard is an [RFC-4480][rfc4880] compliant OpenPGP implementation.  PGP was created 

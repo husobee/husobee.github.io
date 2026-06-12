@@ -3,6 +3,7 @@ layout: post
 title: "Picture is Worth 1000 Words"
 date: 2015-06-16 20:00:00
 categories: steganography golang image
+description: "A steganography experiment in Go: hiding data inside an image by stuffing bytes into the low-order bits of each pixel's RGBA values."
 ---
 
 About a year ago, I was sick as a dog.  I caught some sort of child generated 

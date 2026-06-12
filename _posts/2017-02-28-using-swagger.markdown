@@ -3,6 +3,7 @@ layout: post
 title: "Using Swagger to Develop APIs"
 date: 2017-02-28 08:00:00
 categories: api rest swagger
+description: "Using Swagger / OpenAPI to clearly describe a REST API, improve it, and even generate client code from the spec."
 ---
 
 Recently, I started taking a real look into using [swagger][swagger] to document

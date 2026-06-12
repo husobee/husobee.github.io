@@ -3,6 +3,7 @@ layout: post
 title: "Method Not Found"
 date: 2015-09-29 20:00:00
 categories: golang vestigo 405
+description: "Why most Go URL routers wrongly return 404 instead of 405 for unsupported HTTP methods, and why Vestigo gets it right."
 ---
 
 ## Method Not Found... grrr.

@@ -3,6 +3,7 @@ layout: post
 title: "gRPC exploration in golang"
 date: 2016-03-22 08:00:00
 categories: golang gRPC
+description: "Reaching for gRPC and Protocol Buffers in Go to migrate tens of millions of accounts when a plain REST API wouldn't cut it."
 ---
 
 ## background

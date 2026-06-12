@@ -3,6 +3,7 @@ layout: post
 title: "Introducing the Vestigo URL Router"
 date: 2015-09-22 20:00:00
 categories: golang urlrouter vestigo
+description: "Announcing Vestigo, a fast, framework-independent URL router for idiomatic Go web services that takes plain http.HandlerFuncs."
 ---
 
 ## Introducing Vestigo

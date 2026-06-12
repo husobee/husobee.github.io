@@ -3,6 +3,7 @@ layout: post
 title: "http implementation fasthttp in golang"
 date: 2016-06-23 08:00:00
 categories: golang fasthttp
+description: "Why fasthttp outruns Go's net/http (it avoids a goroutine per request), discovered while reading the Iris framework."
 ---
 
 In some early morning github trending browsing I stumbled across a web framework

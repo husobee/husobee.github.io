@@ -3,6 +3,7 @@ layout: post
 title: "common lisp"
 date: 2015-06-19 20:00:00
 categories: lisp new
+description: "Notes on starting to learn Common Lisp, and why I keep pushing myself to pick up new programming languages."
 ---
 
 I have decided recently to get into [common lisp][clisp].  I have been walking my way through

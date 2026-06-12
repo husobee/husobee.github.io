@@ -3,6 +3,7 @@ layout: post
 title: "sudoku solver"
 date: 2015-11-22 08:00:00
 categories: golang challenge sudoku
+description: "Taking on Go Challenge #8: writing a Sudoku solver, including the rules and puzzle input format the challenge defines."
 ---
 
 ## sudoku solver

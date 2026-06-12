@@ -3,6 +3,7 @@ layout: post
 title: "net.Context in Golang"
 date: 2015-11-13 15:30:00
 categories: golang net context
+description: "Passing per-request data through a Go middleware pipeline using net.Context instead of global maps or bespoke handlers."
 ---
 
 ## We need some Context

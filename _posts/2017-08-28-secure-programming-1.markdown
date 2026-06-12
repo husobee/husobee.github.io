@@ -3,6 +3,7 @@ layout: post
 title: "Secure Programming - Web Applications"
 date: 2017-08-28 15:30:00
 categories: school secure-programming
+description: "Common web application security anti-patterns to watch for, starting with SQL injection, from my infosec master's studies."
 ---
 
 I know... It has been a while since I have posted anything, and for that I am

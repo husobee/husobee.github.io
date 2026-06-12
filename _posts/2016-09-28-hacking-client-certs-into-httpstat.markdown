@@ -3,6 +3,7 @@ layout: post
 title: "Hacking Client Certs into httpstat"
 date: 2016-09-28 05:00:00
 categories: httpstat client-certificates
+description: "Forking httpstat (curl -v with colours) to add TLS client-certificate support in Go."
 ---
 
 Today I was playing around with [httpstat][httpstat] which is described as

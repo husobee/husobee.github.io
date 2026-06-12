@@ -3,6 +3,7 @@ layout: post
 title: "Network Security - OSI"
 date: 2017-08-31 08:30:00
 categories: school network-security
+description: "The OSI Security Architecture (X.800) explained: security attacks, mechanisms and services, and active versus passive attacks."
 ---
 
 As with most concepts, it is often best to create a limited vocabulary when

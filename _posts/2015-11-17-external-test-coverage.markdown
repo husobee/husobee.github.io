@@ -3,6 +3,7 @@ layout: post
 title: "Getting Code Coverage from External Testing"
 date: 2015-11-17 08:00:00
 categories: golang test coverage
+description: "A trick for getting real Go code coverage numbers out of behavior and external test suites, not just unit tests."
 ---
 
 ## External Testing

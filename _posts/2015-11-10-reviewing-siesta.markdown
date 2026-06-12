@@ -3,6 +3,7 @@ layout: post
 title: "Reviewing Siesta"
 date: 2015-11-10 08:00:00
 categories: golang framework review siesta
+description: "A critical review of the Siesta Go web framework's context handling, and why the coming net.Context will obsolete many frameworks."
 ---
 
 I have blogged in the past about various web framework concepts in golang, and

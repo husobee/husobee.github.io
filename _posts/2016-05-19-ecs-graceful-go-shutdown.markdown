@@ -3,6 +3,7 @@ layout: post
 title: "Graceful Shutdown of Go App in AWS ECS"
 date: 2016-05-19 08:00:00
 categories: golang ecs
+description: "Gracefully shutting down a Go app in AWS ECS by handling SIGTERM, and the Dockerfile exec-form gotcha that swallows signals."
 ---
 
 At work we came across a problem set where we needed to stop one of our golang application gracefully

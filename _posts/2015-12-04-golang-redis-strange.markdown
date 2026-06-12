@@ -3,6 +3,7 @@ layout: post
 title: "golang redis strange"
 date: 2015-12-04 08:00:00
 categories: golang redis
+description: "Why web APIs must be load tested: using Locust to drive load and surface the strange issues that only appear at scale."
 ---
 
 ## Testing With Load

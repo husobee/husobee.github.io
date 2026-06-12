@@ -3,6 +3,7 @@ layout: post
 title: "CORS in Golang"
 date: 2015-09-26 20:00:00
 categories: golang cors
+description: "How the CORS preflight handshake actually works, and how to handle cross-origin requests correctly in a Go web service."
 ---
 
 ## Dealing Ajax Cross Origin

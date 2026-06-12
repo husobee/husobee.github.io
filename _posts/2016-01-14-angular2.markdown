@@ -3,6 +3,7 @@ layout: post
 title: "A look at Angular 2"
 date: 2016-01-14 08:00:00
 categories: javascript angular2
+description: "First impressions of the Angular 2 beta: TypeScript, annotations, and how it differs from Angular 1."
 ---
 
 ## Background

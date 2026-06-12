@@ -3,6 +3,7 @@ layout: post
 title: "Kademlia - Distributed Hash Table - Part 1"
 date: 2015-10-13 20:00:00
 categories: dht kademlia distributed key value
+description: "How the Kademlia distributed hash table works, from node IDs to the peer-to-peer network, implemented in Go. Part 1."
 ---
 
 # What is Kademlia

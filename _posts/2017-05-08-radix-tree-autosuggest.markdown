@@ -3,6 +3,7 @@ layout: post
 title: "Simple Auto-complete"
 date: 2017-05-08 08:00:00
 categories: auto-complete radix
+description: "Building a simple auto-suggest microservice in Go backed by a prefix trie, or radix tree."
 ---
 
 A month or two back I decided I wanted to implement a simple auto-suggest

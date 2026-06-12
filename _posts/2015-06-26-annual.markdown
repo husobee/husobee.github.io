@@ -3,6 +3,7 @@ layout: post
 title: "airplane annual inspection"
 date: 2015-06-26 20:00:00
 categories: airplane annual
+description: "A high-level, panel-by-panel walk through what actually goes into a small airplane's annual inspection."
 ---
 
 This week I had been assisting in my airplane's annual inspection.  Here is a 

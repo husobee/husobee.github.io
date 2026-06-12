@@ -3,6 +3,7 @@ layout: post
 title: "Go Mock Yourself"
 date: 2015-06-08 20:00:00
 categories: golang testing unit-test
+description: "Two techniques for unit testing in Go: monkey-patching package functions, and mocking struct methods through interfaces."
 ---
 
 Unit testing is important.  That being said, there are a few things about 

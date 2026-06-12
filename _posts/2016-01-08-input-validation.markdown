@@ -3,6 +3,7 @@ layout: post
 title: "API Input Validation in Golang"
 date: 2016-01-08 08:00:00
 categories: golang validation
+description: "A simple, flexible interface-based pattern for validating API request inputs in Go."
 ---
 
 ## Problem Definition

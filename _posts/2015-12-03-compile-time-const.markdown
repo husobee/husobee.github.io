@@ -3,6 +3,7 @@ layout: post
 title: "golang compile time variables"
 date: 2015-12-03 08:00:00
 categories: golang compile time variables
+description: "Setting Go variables at build time with linker flags (-ldflags -X) to stamp version information into your binary."
 ---
 
 ## Compile Time Variables

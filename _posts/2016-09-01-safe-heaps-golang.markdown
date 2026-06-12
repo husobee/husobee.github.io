@@ -3,6 +3,7 @@ layout: post
 title: "Safe Heaps in Golang"
 date: 2016-09-01 08:00:00
 categories: heaps golang safe
+description: "Implementing a priority queue in Go with container/heap, and making it safe to use."
 ---
 
 

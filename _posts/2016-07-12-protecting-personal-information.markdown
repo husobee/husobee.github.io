@@ -3,6 +3,7 @@ layout: post
 title: "Protecting Personal Information"
 date: 2016-07-12 08:00:00
 categories: personal-information encryption golang
+description: "Designing an encrypted database to protect PII in Go: what counts as personal information and why you should collect as little as possible."
 ---
 
 ## What is PII?

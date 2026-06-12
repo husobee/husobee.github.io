@@ -3,6 +3,7 @@ layout: post
 title: "New Editor Experimentations"
 date: 2015-10-01 20:00:00
 categories: development ide
+description: "A longtime vim user spends a day in Sublime Text, and reflects on why learning new tools is always harder than it looks."
 ---
 
 ## New Editor

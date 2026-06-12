@@ -3,6 +3,7 @@ layout: post
 title: "Golang Channel Dangers"
 date: 2016-09-22 05:00:00
 categories: channel golang danger
+description: "A confusing production bug traced back to Go channels in a worker pool, and the subtle dangers of channel use."
 ---
 
 ### Background

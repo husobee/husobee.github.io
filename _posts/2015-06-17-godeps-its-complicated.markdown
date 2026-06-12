@@ -3,6 +3,7 @@ layout: post
 title: "Godeps... Its Complicated."
 date: 2015-06-17 20:00:00
 categories: golang dependencies
+description: "Why Go needs dependency management, what godep gives you (reproducible builds, version pinning), and where it frustrates me."
 ---
 
 My status with godeps: "It's Complicated."

@@ -3,6 +3,7 @@ layout: post
 title: "REST v. gRPC"
 date: 2016-05-28 08:00:00
 categories: golang rest grpc
+description: "Benchmarking the same endpoint as REST and as gRPC in Go, and weighing the big speed win against team familiarity."
 ---
 
 As some might realize [I have been getting into gRPC][grpc-blog] as of late for

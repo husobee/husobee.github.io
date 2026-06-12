@@ -3,6 +3,7 @@ layout: post
 title: "Building Python With Docker in CI"
 date: 2015-12-11 08:00:00
 categories: python docker ci
+description: "Using drone.io and Docker for CI, volume-mounting the Docker socket to run docker build from inside the build container."
 ---
 
 # Build System

@@ -3,6 +3,7 @@ layout: post
 title: "golang concurrency empirical evidence"
 date: 2015-12-09 08:00:00
 categories: golang concurrency
+description: "When Go concurrency works against you: load testing an auth service where bcrypt and runaway goroutines caused a meltdown."
 ---
 
 ## More Problems with Load

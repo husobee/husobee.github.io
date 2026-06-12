@@ -3,6 +3,7 @@ layout: post
 title: "docker-compose container orchestration"
 date: 2016-02-04 08:00:00
 categories: docker compose
+description: "An overview of docker-compose: describing the multi-container service state you want in a single YAML project file."
 ---
 
 docker-compose is a python project, run by the people at docker, that aims to 

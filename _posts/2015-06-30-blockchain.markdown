@@ -3,6 +3,7 @@ layout: post
 title: "What is a block chain?"
 date: 2015-06-30 20:00:00
 categories: block chain
+description: "A plain-English explanation of how a block chain cryptographically links blocks to make transaction history tamper-evident."
 ---
 
 Everyone has heard by now of Bitcoin, I am sure.  Bitcoin is a distributed 

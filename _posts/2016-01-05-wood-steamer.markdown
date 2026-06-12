@@ -3,6 +3,7 @@ layout: post
 title: "Create your own wood steamer!"
 date: 2016-01-05 08:00:00
 categories: woodworking coffee-maker steamer
+description: "Building a DIY wood steamer from a water jug, PVC pipe, and a coffee-maker heating element to bend thin pieces of wood."
 ---
 
 Over the winter break I decided to try my hand at bending wood.  I am a very

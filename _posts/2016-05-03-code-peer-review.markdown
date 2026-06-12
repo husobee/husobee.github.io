@@ -3,6 +3,7 @@ layout: post
 title: "Team Peer Review"
 date: 2016-05-03 08:00:00
 categories: development peer-review
+description: "A team debate over requiring 100% unit test coverage, and what coverage thresholds really do and don't say about quality."
 ---
 
 I have mentioned before in previous blog postings how much I _love_ testing.  I am fairly half serious

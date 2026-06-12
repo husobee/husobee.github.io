@@ -3,6 +3,7 @@ layout: post
 title: "What's Changed??"
 date: 2015-06-14 20:00:00
 categories: aide intrusion detection
+description: "Using AIDE for file-based intrusion detection: hashing your filesystem so you know exactly what changed on your servers."
 ---
 
 For several years on my internet connected Linux machines I have run file based

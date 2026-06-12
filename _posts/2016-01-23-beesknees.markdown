@@ -3,6 +3,7 @@ layout: post
 title: "Drink of the Week: Bees Knees"
 date: 2016-01-23 08:00:00
 categories: drink-of-week beesknees
+description: "A Prohibition-era cocktail: the Bees Knees, made with gin, honey syrup and lemon, plus how to make the honey syrup."
 ---
 
 I have been experimenting with mixed drinks recently, and decided to try to keep

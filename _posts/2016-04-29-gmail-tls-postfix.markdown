@@ -3,6 +3,7 @@ layout: post
 title: "More Email Fun"
 date: 2016-04-29 08:00:00
 categories: postfix tls
+description: "Why Gmail flags mail from servers without TLS, and configuring Postfix TLS to make that scary red padlock go away."
 ---
 
 

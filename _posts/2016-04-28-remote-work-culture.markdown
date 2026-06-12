@@ -3,6 +3,7 @@ layout: post
 title: "Keys to Successful Remote Work Culture"
 date: 2016-04-28 08:00:00
 categories: work remote
+description: "What separates companies that thrive with remote work from those that fail at it: trust, easy collaboration, and management ego."
 ---
 
 ## Step 1: Accept it, Trust your Workers

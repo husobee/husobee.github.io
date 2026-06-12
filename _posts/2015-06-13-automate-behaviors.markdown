@@ -3,6 +3,7 @@ layout: post
 title: "Automate those Behaviors"
 date: 2015-06-13 20:00:00
 categories: automate behavior testing
+description: "How behavior-driven development turns requirements into executable, self-documenting tests: Gherkin, Cucumber, and a Lettuce example in Python."
 ---
 
 Lately I have been helping create a baseline of testing automation where I work.

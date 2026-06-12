@@ -3,6 +3,7 @@ layout: post
 title: "Golang HTTPS Hello Exchange Hook"
 date: 2016-01-27 08:00:00
 categories: golang tls
+description: "Logging client TLS cipher suites and User-Agents in Go by hooking http.Server's ConnState to inspect the handshake."
 ---
 
 I was asked recently to log all client cipher suite capabilities as well as the User-Agent.  I mean, come on, 
