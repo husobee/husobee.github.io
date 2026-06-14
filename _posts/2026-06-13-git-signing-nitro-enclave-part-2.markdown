@@ -42,13 +42,13 @@ sequenceDiagram
   participant Shim as git-enclave-signer
   participant Nit as nitriding (TLS)
   participant App as Enclave app
-  Git->>Shim: -Y sign -n git -f key <file>
+  Git->>Shim: -Y sign -n git -f key buffer
   Shim->>Nit: POST /sign {namespace, data}
   Nit->>App: forward over localhost
   App->>App: SSHSIG over sha512(data), ed25519
   App-->>Nit: armored "BEGIN SSH SIGNATURE"
   Nit-->>Shim: signature
-  Shim->>Git: write <file>.sig
+  Shim->>Git: write buffer.sig
   Git->>Git: embed signature in the commit
 </div>
 
